@@ -1,5 +1,6 @@
 var nodeplotlib = require('nodeplotlib');
 var dataForge = require('data-forge');
+require('data-forge-fs');
 
 function plotTest() {
 
@@ -8,12 +9,12 @@ function plotTest() {
     /* Datasource manipulation */
 
     let dataFrame = dataForge.readFileSync('./datasource/SpotifyFeatures.csv').parseCSV();
-    dataFrame = dataFrame.parseFloats("popularity");
+    dataFrame = dataFrame.parseInts("popularity");
     dataFrame = dataFrame.parseFloats("danceability");
 
     let myArray = dataFrame.toArray();
 
-    for (i = 0; i < 1000; i++) {
+    for (i = 0; i < 2000; i++) {
 
         let aSong = myArray[i];
 
@@ -24,9 +25,8 @@ function plotTest() {
         let myObject = {
             x: [popularity],
             y: [danceability],
-            // text: title,
-            textposition: 'top center',
-            mode: 'markers+text'
+            text: title,
+            mode: 'markers'
         }
 
         dataToBePlotted.push(myObject);
@@ -39,12 +39,12 @@ function plotTest() {
     let layout = {
         xaxis: {
           title: {
-            text: "Popolarita'",
+            text: "Popolarita",
           }
         },
         yaxis: {
           title: {
-            text: "Danzabilita'",
+            text: "Danzabilita",
           }
         }
       };
