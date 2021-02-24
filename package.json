@@ -19,6 +19,7 @@
   "dependencies": {
     "data-forge": "^1.8.16",
     "data-forge-fs": "0.0.9",
-    "nodeplotlib": "^0.7.1"
+    "nodeplotlib": "^0.7.1",
+    "pca-js": "^1.0.2"
   }
 }
