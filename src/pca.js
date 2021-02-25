@@ -8,7 +8,7 @@ function pcaProcess(){
     let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSV.csv').parseCSV();
 
     // Seleziono solo le features che mi interessano
-    let newDataFrame = dataFrame.subset(["Acousticness", "Danceability", "Energy", "Instrumentalness", "Liveness", "Speechiness", "Valence", "Popularity"]);
+    let newDataFrame = dataFrame.subset(["Acousticness", "Danceability", "Energy", "Liveness", "Speechiness", "Valence", "Popularity"]);
     
     // DataSet come array di array
     let data = newDataFrame.toRows();
