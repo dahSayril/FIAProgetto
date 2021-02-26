@@ -3,7 +3,7 @@ var dataForge = require('data-forge');
 var clusterMaker = require('clusters');
 require('data-forge-fs');
 
-var nameSong=[];
+
 
 function plotTest() {
 
@@ -15,38 +15,48 @@ function plotTest() {
     dataFrame = dataFrame.parseInts("PC1");
     dataFrame = dataFrame.parseInts("PC2");
     dataFrame = dataFrame.parseInts("PC3");
+
+    //array di oggetti del dataset SpotifyCSV, usato per ottenere i titoli delle canzoni
     let titoli=dataFrame2.toArray();
+    console.log(titoli);
+    //array di righe del dataset generato dalla PCA
     let myArray=dataFrame.toRows();
+
+    //array che conterra i vari gruppi del grafico
     var dataToBePlotted= [];
+    //array che conterra i vari colori gia usati
     var coloriUsati=[];
-    console.log(myArray);
 
 
-
-    clusterMaker.k(10);
+    //Eseguo il cluster k-means
+    clusterMaker.k(100);
     clusterMaker.iterations(750);
     clusterMaker.data(myArray);
     var cluster=clusterMaker.clusters();
-    researchDuplicate(43,68,35,myArray);
+
+
     var i=0;
+    //Per ogni claster creato
     while(i<cluster.length){
-        do {
-            var color = random_rgba();
-        }while (isUsed(coloriUsati,color));
-        coloriUsati.push(color);
-        var arraySupporto=cluster[i].points;
+        //Genero un colore, che non sia gia stato usato in precedenza
+        //do {
+            var color = random_color();
+        //}while (isUsed(coloriUsati,color));
+       // coloriUsati.push(color); //Aggiungo il colore a quello gia usato
+        var arraySupporto=cluster[i].points; //Elementi del cluster
+        //Creo un gruppo di puntini che sara mostrato nel grafico
         var trace = {
-            x: extractColum(arraySupporto,0),y:extractColum(arraySupporto,1),z:extractColum(arraySupporto,2),
+            x: extractColum(arraySupporto,0),y:extractColum(arraySupporto,1),z:extractColum(arraySupporto,2), //Do tutte le canzoni che compongono il cluster
             mode: 'markers',
             marker: {
-                size: 8,
+                size: 5,
                 color: color,
                 line: {
                     color: color,
                     width: 0.1},
-                opacity: 0.8,
+                opacity: 1,
             },
-            text: researchTitle(cluster[i],myArray,titoli),
+            text: researchTitleClusters(cluster[i],myArray,titoli), //Ottengo un array di titoli per le canzoni che compongono il claster
             type: 'scatter3d'
         };
         dataToBePlotted.push(trace);
@@ -61,18 +71,21 @@ function plotTest() {
         }};
 
     nodeplotlib.plot(dataToBePlotted,layout);
-
-    console.log(researchTitle(66,79,47,myArray,titoli))
+    console.log("Trace 1");
+    stampaGeneri(cluster[1],myArray,titoli);
+    console.log("Trace 69");
+    stampaGeneri(cluster[69],myArray,titoli);
 }
 
-
+//Funzione che estrae da un claster tutte tutte le colonne (ese: x)
 function extractColum(array,colonna){
     var elementiColonna=[];
     for(i=0;i<array.length;i++)
         elementiColonna.push(array[i][colonna]);
     return elementiColonna;
 }
-function random_rgba() {
+//Funzione che genera un colore random
+function random_color() {
     var coloreRandom;
     min = Math.ceil(1);
     max = Math.floor(15);
@@ -139,6 +152,7 @@ function random_rgba() {
         }
     return coloreRandom;
 }
+//Funzione che controlla se un colore e gia stato usato
 function isUsed(coloriUsati,colore){
     for(i=0;i<coloriUsati.length;i++){
         if(coloriUsati[i]==colore)
@@ -146,37 +160,60 @@ function isUsed(coloriUsati,colore){
     }
     return false;
 }
-
-function researchTitle(clusters,myArray,titoli){
+//Funzione che ritorna un arrey contenenti tutti i titoli delle canzoni che appartengono ad un cluster
+function researchTitleClusters(clusters,myArray,titoli){
     var i=0,j=0;
+    var nameSong=[];
         do{
            // console.log(clusters.points[j]);
             cordX = clusters.points[j][0];
             cordY = clusters.points[j][1];
             cordZ = clusters.points[j][2];
-            console.log(cordX+','+cordY+','+cordZ);
-            for (z = 0; z < myArray.length; z++) {
-                if (cordX ==myArray[z][0]  && cordY ==myArray[z][1] && cordZ ==myArray[z][2]) {
-                    nameSong.push(titoli[z].Title);
-                    console.log(titoli[z].Title);
-                }
-            }
+            nameSong.push(researchTitleSong(cordX,cordY,cordZ,myArray,titoli));
             j++;
-
         }while(j<clusters.points.length)
     return nameSong;
 }
-
-function researchDuplicate(x,y,z,myArray,){
-    var i=0;
+//Funzione che ritorna il titolo di una canzone
+function researchTitleSong(x,y,z,myArray,titoli){
+    var title='';
+    for (i = 0; i < myArray.length; i++) {
+        if (x ==myArray[i][0]  && y ==myArray[i][1] && z ==myArray[i][2]) {
+            title=title+' '+titoli[i].Title;
+        }
+    }
+    return title;
+}
+//Funzione di supporto che ritorna il posizione di una canzone nel file datasetComponentiPrincipali
+function researchPosition(x,y,z,myArray){
+    var i=-1;
     for (j= 0; j < myArray.length; j++) {
 
         if (x == myArray[j][0]  && y ==myArray[j][1] && z ==myArray[j][2]) {
-                i++;
-            console.log(j);
+            return j+2;
         }
     }
-    console.log(i);
+    return i;
+}
+function stampaGeneri(clusters,myArray,titoli){
+    var i=0,j=0;
+    do{
+        // console.log(clusters.points[j]);
+        cordX = clusters.points[j][0];
+        cordY = clusters.points[j][1];
+        cordZ = clusters.points[j][2];
+        researchGenereSong(cordX,cordY,cordZ,myArray,titoli);
+        j++;
+    }while(j<clusters.points.length)
+}
+function researchGenereSong(x,y,z,myArray,titoli){
+    var genere='';
+    for (i = 0; i < myArray.length; i++) {
+        if (x ==myArray[i][0]  && y ==myArray[i][1] && z ==myArray[i][2]) {
+            genere=genere+' '+titoli[i]['Top Genre'];
+        }
+    }
+    console.log(genere);
 }
 
 exports.plotTest = plotTest;
