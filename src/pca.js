@@ -8,7 +8,7 @@ function pcaProcess(){
     let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSV.csv').parseCSV();
 
     // Seleziono solo le features che mi interessano
-    let newDataFrame = dataFrame.subset(["Acousticness", "Danceability", "Energy","Valence","Beats Per Minute (BPM)"]);
+    let newDataFrame = dataFrame.subset(["Acousticness", "Danceability", "Energy", "Valence","Beats Per Minute (BPM)"]);
     
     // DataSet come array di array
     let data = newDataFrame.toRows();
@@ -25,17 +25,21 @@ function pcaProcess(){
     console.log("Primi due: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1]));
     console.log("Primi tre: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1], vectors[2]));
     // DataSet trasformato sulle prime tre componenti principali individuate
-    let adData = pca.computeAdjustedData(data,vectors[0], vectors[1], vectors[2]).adjustedData; // N.B. Array di array
+    let adData = pca.computeAdjustedData(data, vectors[0], vectors[1], vectors[2]).adjustedData; // N.B. Array di array
 
-    // Conterra' ogni canzone con un punteggio shiftato di +50
-    // In questo modo il nuovo DataSet conterra' valori compresi tra 0 e 100 come l'originale
-    let adjustedData = [];
+    let adjustedData = adData;
 
-    // Shifto punteggio di ogni elemento a +50
-    adData.forEach(element => {
-        let newElement = element.map(score=>Math.round(score+50));
-        adjustedData.push(newElement);
-    });
+    const minPC1 = Math.min(...adData[0]);
+    const minPC2 = Math.min(...adData[1]);
+    const minPC3 = Math.min(...adData[2]);
+
+    adjustedData[0].forEach((value, index, array) => array[index] = value + Math.abs(minPC1));
+    adjustedData[1].forEach((value, index, array) => array[index] = value + Math.abs(minPC2));
+    adjustedData[2].forEach((value, index, array) => array[index] = value + Math.abs(minPC3));
+
+    const maxPC1 = Math.max(...adData[0]);
+    const maxPC2 = Math.max(...adData[1]);
+    const maxPC3 = Math.max(...adData[2]);
 
     // Nuovo DataSource che conterra' il DataSet trasformato sulle PC individuate
     let myNewDataSource = [];
@@ -44,9 +48,9 @@ function pcaProcess(){
     for (i = 0; i < dimension; i++){
 
         let mySong = {};
-        mySong.PC1 = adjustedData[0][i];
-        mySong.PC2 = adjustedData[1][i];
-        mySong.PC3 = adjustedData[2][i];
+        mySong.PC1 = 100 * (adjustedData[0][i] / maxPC1);
+        mySong.PC2 = 100 * (adjustedData[1][i] / maxPC2);
+        mySong.PC3 = 100 * (adjustedData[2][i] / maxPC3);
 
         myNewDataSource.push(mySong);
 
