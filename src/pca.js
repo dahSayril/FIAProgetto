@@ -8,7 +8,7 @@ function pcaProcess(){
     let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSV.csv').parseCSV();
 
     // Seleziono solo le features che mi interessano
-    let newDataFrame = dataFrame.subset(["Acousticness", "Danceability", "Energy", "Instrumentalness", "Liveness", "Speechiness", "Valence", "Popularity"]);
+    let newDataFrame = dataFrame.subset(["Acousticness", "Danceability", "Energy","Valence","Beats Per Minute (BPM)"]);
     
     // DataSet come array di array
     let data = newDataFrame.toRows();
@@ -24,7 +24,6 @@ function pcaProcess(){
     console.log("Primo: " + pca.computePercentageExplained(vectors,vectors[0]));
     console.log("Primi due: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1]));
     console.log("Primi tre: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1], vectors[2]));
-
     // DataSet trasformato sulle prime tre componenti principali individuate
     let adData = pca.computeAdjustedData(data,vectors[0], vectors[1], vectors[2]).adjustedData; // N.B. Array di array
 
@@ -58,7 +57,6 @@ function pcaProcess(){
 		values: myNewDataSource
 	});
     newDataFrame2.asCSV().writeFileSync('../datasource/datasetComponentiPrincipali.csv');
-
 }
 
 pcaProcess();
