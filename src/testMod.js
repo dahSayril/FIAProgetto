@@ -26,15 +26,36 @@ function plotTest() {
     var dataToBePlotted= [];
     //array che conterra i vari colori gia usati
     var coloriUsati=[];
+    var kmin=2;
+   var kmax=20;
 
 
-    //Eseguo il cluster k-means
-    clusterMaker.k(100);
-    clusterMaker.iterations(750);
-    clusterMaker.data(myArray);
-    var cluster=clusterMaker.clusters();
+    var distorsione=[];
+    for(k=kmin;k<=kmax;k++) {
+        //Eseguo il cluster k-means
+        clusterMaker.k(k);
+        clusterMaker.iterations(200);
+        clusterMaker.data(myArray);
+        var cluster = clusterMaker.clusters();
+        var d = 0;
+        for (i = 0; i < k; i++)
+            d = d + sommaDistanze(cluster[i].centroid, cluster[i]);
+        distorsione.push(d/k);
+        console.log(k+':'+d/k);
+    }
 
 
+    var trace1 = {
+        x: [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+        y: distorsione,
+        type: 'scatter'
+    };
+
+    var data = [trace1];
+
+    nodeplotlib.plot(data);
+
+/*
     var i=0;
     //Per ogni claster creato
     while(i<cluster.length){
@@ -71,10 +92,9 @@ function plotTest() {
         }};
 
     nodeplotlib.plot(dataToBePlotted,layout);
-    console.log("Trace 1");
-    stampaGeneri(cluster[1],myArray,titoli);
-    console.log("Trace 69");
-    stampaGeneri(cluster[69],myArray,titoli);
+
+*/
+
 }
 
 //Funzione che estrae da un claster tutte tutte le colonne (ese: x)
@@ -215,5 +235,16 @@ function researchGenereSong(x,y,z,myArray,titoli){
     }
     console.log(genere);
 }
+
+
+function sommaDistanze(centroide,cluster){
+    var punti=cluster.points;
+    var somma=0;
+    for(i=0;i<punti.length;i++){
+        somma=somma+Math.sqrt(Math.pow(centroide[0]-punti[i][0],2)+Math.pow(centroide[1]-punti[i][1],2)+Math.pow(centroide[2]-punti[i][2],2));
+    }
+    return somma;
+}
+
 
 exports.plotTest = plotTest;
