@@ -21,6 +21,7 @@
     "data-forge": "^1.8.16",
     "data-forge-fs": "0.0.9",
     "nodeplotlib": "^0.7.3",
-    "pca-js": "^1.0.2"
+    "pca-js": "^1.0.2",
+    "zscore": "^0.1.0"
   }
 }
