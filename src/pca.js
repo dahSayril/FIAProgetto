@@ -29,9 +29,10 @@ function pcaProcess(){
         
         let mySong = { };
         
-        for(let j = 0; j < myColumns.length; j++) 
-            mySong[`value${j}`] = myColumns[j][i];
-        
+        for(let j = 0; j < myColumns.length; j++){
+            let name = features[j];
+            mySong[name] = myColumns[j][i];
+        }
         newDataSource.push(mySong);
 
     }

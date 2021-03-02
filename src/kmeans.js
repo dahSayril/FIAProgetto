@@ -11,11 +11,16 @@ function plotTest() {
     dataFrame = dataFrame.parseInts("PC2");
     dataFrame = dataFrame.parseInts("PC3");
 
+    let dataFrame2 = dataForge.readFileSync('./datasource/datasetStandardizzato.csv').parseCSV();
+
+    let features = ["Danceability", "Energy", "Beats Per Minute (BPM)"]
+    let subDataFrame = dataFrame2.subset(features);
+
     //array di oggetti del dataset SpotifyCSV, usato per ottenere i titoli delle canzoni
-    let myArrayCompleto=dataFrame2.toArray();
+    let myArrayCompleto=subDataFrame.toArray();
     console.log(myArrayCompleto);
     //array di righe del dataset generato dalla PCA
-    let myArray=dataFrame.toRows();
+    let myArray=subDataFrame.toRows();
     //array che conterra i vari gruppi del grafico
     let dataToBePlotted= [];
 
