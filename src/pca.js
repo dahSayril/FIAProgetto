@@ -23,9 +23,26 @@ function pcaProcess(){
         myColumns.push(myColumn);
     }
 
+    let newDataSource = [];
+    
+    for(let i = 0; i < myColumns[0].length; i++) {
+        
+        let mySong = { };
+        
+        for(let j = 0; j < myColumns.length; j++) 
+            mySong[`value${j}`] = myColumns[j][i];
+        
+        newDataSource.push(mySong);
+
+    }
+    
+    let newDataFrame3 = new dataForge.DataFrame({
+		values: newDataSource
+	});
+    newDataFrame3.asCSV().writeFileSync('../datasource/datasetStandardizzato.csv');
 
     // DataSet come array di array
-    let data = subDataFrame.toRows();
+    let data = newDataFrame3.toRows();
 
     // Numero di elementi (canzoni) nel DataSet
     let dimension = data.length;
