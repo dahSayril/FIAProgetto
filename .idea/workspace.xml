@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad4e4568-61e8-4f3a-a031-7270a9d43ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/testMod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/kmeansNoPCA.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kmeans.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kmeans.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeans.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pca.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pca.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,21 +35,32 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\angel\Desktop\FIAProgetto\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\angel\Desktop\FIAProgetto\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.app.js">
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="kmeans.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/kmeans.js" working-dir="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
+    <configuration name="pca.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/pca.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.kmeans.js" />
+        <item itemvalue="Node.js.pca.js" />
       </list>
     </recent_temporary>
   </component>
@@ -71,7 +85,12 @@
       <workItem from="1614593530202" duration="1051000" />
       <workItem from="1614594621174" duration="5737000" />
       <workItem from="1614674734151" duration="5810000" />
-      <workItem from="1614680607838" duration="581000" />
+      <workItem from="1614680607838" duration="964000" />
+      <workItem from="1614681619951" duration="1057000" />
+      <workItem from="1614682793609" duration="1117000" />
+      <workItem from="1614684204776" duration="4633000" />
+      <workItem from="1614691659468" duration="124000" />
+      <workItem from="1614695017107" duration="1212000" />
     </task>
     <servers />
   </component>
@@ -88,16 +107,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/../Vecchio/FIAProgetto/src/testMod.js</url>
-          <line>94</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

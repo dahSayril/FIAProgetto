@@ -5,10 +5,12 @@ require('data-forge-fs');
 
 function plotTest() {
     /* Datasource manipulation */
-    let dataFrame = dataForge.readFileSync('./datasource/datasetComponentiPrincipali.csv').parseCSV();
-    dataFrame=dataFrame.parseFloats("PC1");
-    dataFrame=dataFrame.parseFloats("PC2");
-    dataFrame=dataFrame.parseFloats("PC3");
+    let dataFrame = dataForge.readFileSync('./datasource/datasetStandardizzato.csv').parseCSV();
+    let features = ["Danceability", "Energy","Beats Per Minute (BPM)"]
+    dataFrame = dataFrame.subset(features);
+    dataFrame=dataFrame.parseFloats("Danceability");
+    dataFrame=dataFrame.parseFloats("Energy");
+    dataFrame=dataFrame.parseFloats("Beats Per Minute (BPM)");
 
     let dataFrame2 = dataForge.readFileSync('./datasource/SpotifyCSVSemplificato.csv').parseCSV();
 
@@ -269,7 +271,7 @@ function generiMusicali(datasetCompleto){
     }
     return generi;
 }
-function categorizzazioneCluster(points,datasetPCA,datasetCompleto){
+function categorizzazioneCluster(points,datasetPCA,datasetCompleto,generiDataset){
     var generiPrincipali=["alternative","jazz","pop","indie","rock","country","dance","hip hop","metal","blues","folk","soul","carnaval","punk","disco","electro","rap","latin","reggae","altri"];
     //1. Prendo tutti i generi del cluster
     var generi=[];
@@ -342,6 +344,7 @@ function categorizzazioneCluster(points,datasetPCA,datasetCompleto){
         else
             conteggioGeneri[19]++;
     }
+
 
     //3. Stringa percentuale
     var percentuale="";

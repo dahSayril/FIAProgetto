@@ -5,7 +5,7 @@ require('data-forge-fs');
 function pcaProcess(){
 
     // Carico il DataSet
-    let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSV.csv').parseCSV();
+    let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSVSemplificato.csv').parseCSV();
 
     // Seleziono solo le features che mi interessano
     let features = ["Acousticness", "Danceability", "Energy", "Valence","Beats Per Minute (BPM)"]
@@ -81,9 +81,9 @@ function pcaProcess(){
     for (i = 0; i < dimension; i++){
 
         let mySong = {};
-        mySong.PC1 = 100 * (adjustedData[0][i] / maxPC1);
-        mySong.PC2 = 100 * (adjustedData[1][i] / maxPC2);
-        mySong.PC3 = 100 * (adjustedData[2][i] / maxPC3);
+        mySong.PC1 = 1000 * (adjustedData[0][i] / maxPC1);
+        mySong.PC2 = 1000 * (adjustedData[1][i] / maxPC2);
+        mySong.PC3 = 1000 * (adjustedData[2][i] / maxPC3);
 
         myNewDataSource.push(mySong);
 
