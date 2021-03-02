@@ -1,3 +1,3 @@
-let testMod = require('./src/kmeans');
+let testMod = require('./src/testMod');
 
 testMod.plotTest();
