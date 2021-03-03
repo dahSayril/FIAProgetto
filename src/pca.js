@@ -5,14 +5,16 @@ require('data-forge-fs');
 function pcaProcess(){
 
     // Carico il DataSet
-    let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSVSemplificato.csv').parseCSV();
+    let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSV.csv').parseCSV();
 
     // Seleziono solo le features che mi interessano
-    let features = ["Acousticness", "Danceability", "Energy", "Valence","Beats Per Minute (BPM)"]
+    let features = ["Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    let totalFeatures=["Index","Title","Artist","Top Genre","Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
     let subDataFrame = dataFrame.subset(features);
 
     var columns = subDataFrame.getColumns();
     var arrayOfColumns = columns.toArray();
+    var arrayCompleto= dataFrame.toArray();
     
     let myColumns = []; // Array di array (ogni array e' una colonna)
 
@@ -23,12 +25,31 @@ function pcaProcess(){
         myColumns.push(myColumn);
     }
 
+    //Normalizzazione valori tra 0 e 1
+    for(i=0;i<myColumns.length;i++){
+        var max=-100,min=100;
+        //Ricero il massimo e il minimo
+        for(j=0;j<myColumns[i].length;j++){
+            if(max<myColumns[i][j])
+                max=myColumns[i][j];
+            if(min>myColumns[i][j])
+                min=myColumns[i][j];
+        }
+        //Normalizzo i valori
+        for(j=0;j<myColumns[i].length;j++){
+            myColumns[i][j]=normalize(myColumns[i][j],max,min);
+        }
+    }
+
+
     let newDataSource = [];
-    
     for(let i = 0; i < myColumns[0].length; i++) {
         
         let mySong = { };
-        
+        mySong[totalFeatures[0]]=arrayCompleto[i].Index;
+        mySong[totalFeatures[1]]=arrayCompleto[i].Title;
+        mySong[totalFeatures[2]]=arrayCompleto[i].Artist;
+        mySong[totalFeatures[3]]=arrayCompleto[i]['Top Genre'];
         for(let j = 0; j < myColumns.length; j++){
             let name = features[j];
             mySong[name] = myColumns[j][i];
@@ -40,10 +61,13 @@ function pcaProcess(){
     let newDataFrame3 = new dataForge.DataFrame({
 		values: newDataSource
 	});
+
+
     newDataFrame3.asCSV().writeFileSync('../datasource/datasetStandardizzato.csv');
+    subDataFrame = newDataFrame3.subset(features);
 
     // DataSet come array di array
-    let data = newDataFrame3.toRows();
+    let data = subDataFrame.toRows();
 
     // Numero di elementi (canzoni) nel DataSet
     let dimension = data.length;
@@ -53,26 +77,14 @@ function pcaProcess(){
 
     // Percentuale di accuratezza considerando il primo, i primi due e i primi tre autovettori
     console.log("Percentuali: ");
-    console.log("Primo: " + pca.computePercentageExplained(vectors,vectors[0]));
-    console.log("Primi due: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1]));
-    console.log("Primi tre: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1], vectors[2]));
+    console.log("1: " + pca.computePercentageExplained(vectors,vectors[0]));
+    console.log("2: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1]));
+    console.log("3: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1], vectors[2]));
     
-    // DataSet trasformato sulle prime tre componenti principali individuate
+    // DataSet trasformato sulle prime quattro componenti principali individuate
     let adData = pca.computeAdjustedData(data, vectors[0], vectors[1], vectors[2]).adjustedData; // N.B. Array di array
 
-    let adjustedData = adData;
 
-    const minPC1 = Math.min(...adData[0]);
-    const minPC2 = Math.min(...adData[1]);
-    const minPC3 = Math.min(...adData[2]);
-
-    adjustedData[0].forEach((value, index, array) => array[index] = value + Math.abs(minPC1));
-    adjustedData[1].forEach((value, index, array) => array[index] = value + Math.abs(minPC2));
-    adjustedData[2].forEach((value, index, array) => array[index] = value + Math.abs(minPC3));
-
-    const maxPC1 = Math.max(...adData[0]);
-    const maxPC2 = Math.max(...adData[1]);
-    const maxPC3 = Math.max(...adData[2]);
 
     // Nuovo DataSource che conterra' il DataSet trasformato sulle PC individuate
     let myNewDataSource = [];
@@ -81,9 +93,9 @@ function pcaProcess(){
     for (i = 0; i < dimension; i++){
 
         let mySong = {};
-        mySong.PC1 = 1000 * (adjustedData[0][i] / maxPC1);
-        mySong.PC2 = 1000 * (adjustedData[1][i] / maxPC2);
-        mySong.PC3 = 1000 * (adjustedData[2][i] / maxPC3);
+        mySong.PC1 = adData[0][i];
+        mySong.PC2 = adData[1][i];
+        mySong.PC3 = adData[2][i];
 
         myNewDataSource.push(mySong);
 
@@ -129,6 +141,10 @@ function standardize(array){
         zscore = (value - mean)/standardDeviation;
         array[index] = zscore;
     });
+}
+
+function normalize(val, max, min) {
+    return (val - min) / (max - min);
 }
 
 pcaProcess();

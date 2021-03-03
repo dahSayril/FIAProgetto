@@ -12,7 +12,7 @@ function plotTest() {
     dataFrame=dataFrame.parseFloats("Energy");
     dataFrame=dataFrame.parseFloats("Beats Per Minute (BPM)");
 
-    let dataFrame2 = dataForge.readFileSync('./datasource/SpotifyCSVSemplificato.csv').parseCSV();
+    let dataFrame2 = dataForge.readFileSync('./datasource/SpotifyCSV.csv').parseCSV();
 
     //array di oggetti del dataset SpotifyCSV, usato per ottenere i titoli delle canzoni
     let myArrayCompleto=dataFrame2.toArray();
@@ -26,7 +26,7 @@ function plotTest() {
 
     elbowPoint(myArray,2,20);
 
-    clusterMaker.k(6);
+    clusterMaker.k(7);
     clusterMaker.iterations(750);
     clusterMaker.data(myArray);
 

@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad4e4568-61e8-4f3a-a031-7270a9d43ff3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/kmeansNoPCA.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kmeans.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeans.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kmeansNoPCA.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeansNoPCA.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pca.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pca.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +59,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.app.js" />
-        <item itemvalue="Node.js.kmeans.js" />
         <item itemvalue="Node.js.pca.js" />
+        <item itemvalue="Node.js.kmeans.js" />
       </list>
     </recent_temporary>
   </component>
@@ -91,6 +91,9 @@
       <workItem from="1614684204776" duration="4633000" />
       <workItem from="1614691659468" duration="124000" />
       <workItem from="1614695017107" duration="1212000" />
+      <workItem from="1614708840584" duration="9491000" />
+      <workItem from="1614758958262" duration="5017000" />
+      <workItem from="1614765830994" duration="619000" />
     </task>
     <servers />
   </component>
