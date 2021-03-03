@@ -3,45 +3,53 @@ var dataForge = require('data-forge');
 var clusterMaker = require('clusters');
 require('data-forge-fs');
 
-function plotTest() {
+function main() {
+    
     /* Datasource manipulation */
+
+    // DataFrame con Componenti Principali
     let dataFrame = dataForge.readFileSync('./datasource/datasetComponentiPrincipali.csv').parseCSV();
     dataFrame=dataFrame.parseFloats("PC1");
     dataFrame=dataFrame.parseFloats("PC2");
     dataFrame=dataFrame.parseFloats("PC3");
+    let myArray=dataFrame.toRows(); // DataFrame come array di array (ogni riga e' una canzone)
+    
 
-    let dataFrame2D=dataFrame.subset(["PC1","PC2"]);
-
+    // DataFrame2 dal DataSet completo ma dopo normalizzazione e standardizzazione
     let dataFrame2 = dataForge.readFileSync('./datasource/datasetStandardizzato.csv').parseCSV();
-
-    //array di oggetti del dataset SpotifyCSV, usato per ottenere i titoli delle canzoni
     let myArrayCompleto=dataFrame2.toArray();
 
-    //array di righe del dataset generato dalla PCA
-    let myArray=dataFrame.toRows();
-    let myArray2D=dataFrame2D.toRows();
+    
+    //Grafico Elbow Point
+    const elbowPointIndex = elbowPoint(myArray,2,10);
+    
+    //Calcolo cluster
+    const cluster = makeCluster(elbowPointIndex, 200, myArray);
 
-    elbowPoint(myArray,2,20);
-    grafico3D(myArray,5,myArrayCompleto);
-    elbowPoint2D(myArray2D,2,20);
-    grafico2D(myArray2D,5,myArrayCompleto);
-    graficoRadar(myArray,5,myArrayCompleto);
+    //Grafici cluster
+    grafico3D(cluster,myArray,myArrayCompleto);
+    graficoRadar(cluster, myArray, myArrayCompleto);
+    
+    makeHistograms(cluster, "Acousticness", myArray, myArrayCompleto);
 
-    clusterMaker.k(5);
-    clusterMaker.iterations(100);
+}
+
+/* Esegue algoritmo kmeans e ritorna un array con centroidi e punti */
+function makeCluster(numberOfClusters, iterations, myArray){
+    clusterMaker.k(numberOfClusters);
+    clusterMaker.iterations(iterations);
     clusterMaker.data(myArray);
-    var cluster = clusterMaker.clusters();
-    histogram(cluster[0].points,"Acousticness",myArray,myArrayCompleto,0);
-    histogram(cluster[2].points,"Acousticness",myArray,myArrayCompleto,2);
+    return clusterMaker.clusters();
 }
 
 /**
  * Funzione che genera il grafico elbow point
- * @param dataset dataset su cui si esegue il clustering
+ * @param dataset il dataset
  * @param min valore minimo di clustes che si vogliono creare
  * @param max valore massimo di clusters che si vogliono creare
  */
 function elbowPoint(dataset,min,max){
+    
     let kmin=min; //valore minimo di k
     let kmax=max; //valore massi a cui puo arrivare k
     let sse=[]; //squared sum estimate
@@ -50,15 +58,22 @@ function elbowPoint(dataset,min,max){
         clusterMaker.k(k);
         clusterMaker.iterations(100);
         clusterMaker.data(dataset);
-        let cluster = clusterMaker.clusters();
+        let cluster = clusterMaker.clusters(); 
         var distortions = 0;
         for (i = 0; i < k; i++)
             distortions = distortions + sommaDistanze(cluster[i].centroid, cluster[i].points);
         sse.push(distortions);
-
     }
 
-
+    // Calcolo elbow point
+    deltas = [];
+    for (i = 1; i < sse.length - 1; i++){
+        delta1 = Math.abs(sse[i] - sse[i-1]);
+        delta2 = Math.abs(sse[i+1] - sse[i]);
+        deltas.push(Math.abs(delta2-delta1));
+    }
+    const maximumDelta = Math.max(...deltas);
+    const elbowPoint = deltas.indexOf(maximumDelta) + 1 + kmin; // Trust me
 
     //Inserisco in un array i valori di k per cui ho calcolato l'sse
     var cordinateX=[];
@@ -83,76 +98,38 @@ function elbowPoint(dataset,min,max){
     };
 
     nodeplotlib.plot(data,layout);
+    
+    return elbowPoint;
 }
 
-function elbowPoint2D(dataset,min,max){
-    let kmin=min; //valore minimo di k
-    let kmax=max; //valore massi a cui puo arrivare k
-    let sse=[]; //squared sum estimate
-
-    for(k=kmin;k<=kmax;k++) { //Calcolo l'sse per ogni k
-        clusterMaker.k(k);
-        clusterMaker.iterations(100);
-        clusterMaker.data(dataset);
-        let cluster = clusterMaker.clusters();
-        var distortions = 0;
-        for (i = 0; i < k; i++)
-            distortions = distortions + sommaDistanze2d(cluster[i].centroid, cluster[i].points);
-        sse.push(distortions);
-
-    }
-
-
-
-    //Inserisco in un array i valori di k per cui ho calcolato l'sse
-    var cordinateX=[];
-    for(k=0;k<kmax;k++)
-        cordinateX[k]=kmin+k;
-
-    //Generazione del grafico
-    var trace1 = {
-        x: cordinateX,
-        y: sse,
-        type: 'scatter'
-    };
-    var data = [trace1];
-    var layout = {
-        title: 'Elbow Point 2D graphics',
-        xaxis: {
-            title: 'Number of Clusters',
-        },
-        yaxis: {
-            title: 'SSE',
-        }
-    };
-
-    nodeplotlib.plot(data,layout);
-}
-
-function grafico3D(datasetCluster,k,datasetCompleto){
+function grafico3D(clusters,datasetCluster,datasetCompleto){
+    
     var dataToBePlotted=[];
     var i=0;
-    clusterMaker.k(k);
-    clusterMaker.iterations(100);
-    clusterMaker.data(datasetCluster);
-    let cluster = clusterMaker.clusters();
-    //Per ogni claster creato
-    while(i<cluster.length){
+
+    //Per ogni cluster creato
+    while(i<clusters.length){
+        
         let trace = {
-            x: extractColum(cluster[i].points,0),y:extractColum(cluster[i].points,1),z:extractColum(cluster[i].points,2), //Do tutte le canzoni che compongono il cluster
+            x: extractColum(clusters[i].points,0),
+            y:extractColum(clusters[i].points,1),
+            z:extractColum(clusters[i].points,2), //Do tutte le canzoni che compongono il cluster
             mode: 'markers',
-            name:"Trace "+i+": "+categorizzazioneCluster(cluster[i].points,datasetCluster,datasetCompleto),
+            name:"Trace " + i + ": " + categorizzazioneCluster(clusters[i].points,datasetCluster,datasetCompleto),
             marker: {
                 size: 5,
                 line: {
-                    width: 0.1},
+                    width: 0.1
+                },
                 opacity: 1,
             },
-            text: researchTitleCluster(cluster[i].points,datasetCluster,datasetCompleto), //Ottengo un array di titoli per le canzoni che compongono il claster
+            text: researchTitleCluster(clusters[i].points,datasetCluster,datasetCompleto), //Ottengo un array di titoli per le canzoni che compongono il claster
             type: 'scatter3d'
         };
+
         dataToBePlotted.push(trace);
         i=i+1;
+
     }
 
     var layout = {margin: {
@@ -161,54 +138,19 @@ function grafico3D(datasetCluster,k,datasetCompleto){
             b: 0,
             t: 0
         }};
+    
     nodeplotlib.plot(dataToBePlotted,layout);
 
 }
 
-function grafico2D(datasetCluster,k){
-    var j=0;
-    var data=[]
-    clusterMaker.k(k);
-    clusterMaker.iterations(100);
-    clusterMaker.data(datasetCluster);
-    var cluster = clusterMaker.clusters();
-    while(j<cluster.length) {
-        var trace = {
-            x: extractColum(cluster[j].points, 0),
-            y: extractColum(cluster[j].points, 1),
-            mode: 'markers',
-            type: 'scatter',
-            name: 'Cluster ' + j,
-            marker: {size: 5}
-        };
-        data.push(trace);
-        j = j + 1;
-    }
+function graficoRadar(clusters, datasetCluster,datasetCompleto){
 
-    var layout = {
-        xaxis: {
-            name: "Componente 1",
-        },
-        yaxis: {
-            name: "Componente 2",
-        },
-        title:'Cluster By Pca Component'
-    };
-
-    nodeplotlib.plot(data,layout);
-
-}
-
-function graficoRadar(datasetCluster,k,datasetCompleto){
     var j=0;
     var data=[];
-    clusterMaker.k(k);
-    clusterMaker.iterations(100);
-    clusterMaker.data(datasetCluster);
-    var cluster = clusterMaker.clusters();
-    //Per ogni claster creato
-    while(j<cluster.length) {
-        var songs=fromPointsToSong(cluster[j].points,datasetCluster,datasetCompleto);
+
+    //Per ogni cluster creato
+    while(j<clusters.length) {
+        var songs=fromPointsToSong(clusters[j].points,datasetCluster,datasetCompleto);
         var trace = {
             type: 'scatterpolar',
             r: [ valoreMedio(songs,"Energy"), valoreMedio(songs,"Danceability"),
@@ -217,7 +159,7 @@ function graficoRadar(datasetCluster,k,datasetCompleto){
                 valoreMedio(songs,"Acousticness"), valoreMedio(songs,"Speechiness")],
             theta: ["Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"],
             fill: 'toself',
-            name: 'Custer '+j,
+            name: 'Cluster '+ j,
         };
         data.push(trace);
         j = j + 1;
@@ -248,7 +190,7 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
         y: valoriFeature,
         name: 'Canzone',
         marker: {
-            color: "rgba(255, 100, 102, 0.7)",
+            color: "rgba(255, 100, 102, 1)",
             line: {
                 color:  "rgba(255, 100, 102, 1)",
                 width: 1
@@ -260,7 +202,7 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
     };
 
     var trace2 = {
-        y: new Array(songs.length).fill(getMean(valoriFeature)),
+        y: new Array(songs.length).fill(valoreMedio(valoriFeature)),
         x:  [...Array(songs.length).keys()],
         marker: {
             color: "rgba(0, 0, 0, 1)",
@@ -273,7 +215,7 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
         type: 'scatter'
     };
 
-    var data = [trace1, trace2];
+    var data = [trace1, trace2, trace3];
     var layout = {
         bargap: 0.05,
         bargroupgap: 0.2,
@@ -286,17 +228,16 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
 }
 
 /**
- * Funzione che calcola la distanza euclidea di tutti i punti di un cluster dal centroide
- * @param centroide array che contiene le cordinate del centroide del cluster
- * @param punti array che contiene le cordinate dei punti del cluster
- * @returns {number} somma della distanza euclidea di ogni punto
+ * 
+ * @param {*} clusters i clusters trovati da kmeans
+ * @param {*} feature la feature da graficare
+ * @param {*} datasetCluster 
+ * @param {*} datasetCompleto 
  */
-function sommaDistanze(centroide,punti){
-    var somma=0;
-    for(i=0;i<punti.length;i++){
-        somma=somma+Math.sqrt(Math.pow(punti[i][0]-centroide[0],2)+Math.pow(punti[i][1]-centroide[1],2)+Math.pow(punti[i][2]-centroide[2],2));
-    }
-    return somma;
+function makeHistograms(clusters, feature, datasetCluster, datasetCompleto){
+    clusters.forEach((value, index, array)=>{
+        histogram(value.points, feature, datasetCluster, datasetCompleto, index + 1);
+    });
 }
 
 /**
@@ -305,14 +246,18 @@ function sommaDistanze(centroide,punti){
  * @param punti array che contiene le cordinate dei punti del cluster
  * @returns {number} somma della distanza euclidea di ogni punto
  */
-function sommaDistanze2d(centroide,punti){
-    var somma=0;
+function sommaDistanze(centroide, punti){
+    let somma = 0;
+    const dimension = centroide.length;
     for(i=0;i<punti.length;i++){
-        somma=somma+Math.sqrt(Math.pow(punti[i][0]-centroide[0],2)+Math.pow(punti[i][1]-centroide[1],2));
+        sommaDimensioni = 0;
+        for(j=0;j<dimension;j++){
+            sommaDimensioni += Math.pow(punti[i][j]-centroide[j],2);
+        }
+        somma += Math.sqrt(sommaDimensioni);
     }
     return somma;
 }
-
 
 /**
  * Funzione che ritorna tutte le coordinate (ese:X) dei punti nel cluster
@@ -550,28 +495,14 @@ function categorizzazioneCluster(points,datasetPCA,datasetCompleto){
     return percentuale;
 }
 
-function valoreMedio(songs,featureSong){
-    var somma=0;
-    var valoriFeature=[];
-    for(j=0;j<songs.length;j++) {
-        valoriFeature.push(parseFloat(songs[j][featureSong]));
-
-    }
-    var i=0;
-    console.log(valoriFeature[0]);
-    for(i;i<valoriFeature.length;i++) {
-        somma =somma+valoriFeature[i];
-    }
-    console.log(somma/i);
-    return somma/i;
-}
-
-function getMean(array){
+/* Media di valori di tutto l'array */
+function valoreMedio(array, feature = undefined){
     let n = array.length;
     let sum = 0;
     array.forEach((value, index, array)=>{
-        if(value!=""||value){
-            sum += value;
+        const val = feature==undefined?value:value[feature];
+        if(val!=""||val){
+            sum += parseFloat(val);
         } else {
             n--;
         }
@@ -579,4 +510,4 @@ function getMean(array){
     return sum/n;
 }
 
-exports.plotTest = plotTest;
+exports.mainKMeans = main;
