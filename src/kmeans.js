@@ -18,7 +18,6 @@ function main() {
     // DataFrame2 dal DataSet completo ma dopo normalizzazione e standardizzazione
     let dataFrame2 = dataForge.readFileSync('./datasource/datasetStandardizzato.csv').parseCSV();
     let myArrayCompleto=dataFrame2.toArray();
-
     
     //Grafico Elbow Point
     const elbowPointIndex = elbowPoint(myArray,2,10);
@@ -179,8 +178,9 @@ function graficoRadar(clusters, datasetCluster,datasetCompleto){
 
 function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster){
 
-    var songs=fromPointsToSong(puntiCluster,datasetCluster,datasetCompleto);
-    var valoriFeature=[];
+    let songs = fromPointsToSong(puntiCluster,datasetCluster,datasetCompleto); //contiene le canzoni del cluster
+    
+    var valoriFeature=[]; // solo canzoni cluster
     for(i=0;i<songs.length;i++){
         valoriFeature.push(parseFloat(songs[i][feature]))
     }
@@ -211,6 +211,20 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
                 width: 1
             }
         },
+        name: 'Media del cluster',
+        type: 'scatter'
+    };
+
+    var trace3 = {
+        y: new Array(songs.length).fill(valoreMedio(datasetCompleto, feature)),
+        x:  [...Array(songs.length).keys()],
+        marker: {
+            color: "rgb(106,90,205,1)",
+            line: {
+                color:  "rgb(106,90,205,1)",
+                width: 1
+            }
+        },
         name: 'Media del dataset',
         type: 'scatter'
     };
@@ -225,6 +239,7 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
         yaxis: {title: feature}
     };
     nodeplotlib.plot(data,layout);
+
 }
 
 /**
