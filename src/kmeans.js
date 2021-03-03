@@ -20,15 +20,15 @@ function plotTest() {
     //array di righe del dataset generato dalla PCA
     let myArray=dataFrame.toRows();
     let myArray2D=dataFrame2D.toRows();
-/*
+
     elbowPoint(myArray,2,20);
     grafico3D(myArray,5,myArrayCompleto);
     elbowPoint2D(myArray2D,2,20);
     grafico2D(myArray2D,5,myArrayCompleto);
     graficoRadar(myArray,5,myArrayCompleto);
-*/
+
     clusterMaker.k(5);
-    clusterMaker.iterations(750);
+    clusterMaker.iterations(100);
     clusterMaker.data(myArray);
     var cluster = clusterMaker.clusters();
     histogram(cluster[0].points,"Acousticness",myArray,myArrayCompleto,0);
@@ -48,7 +48,7 @@ function elbowPoint(dataset,min,max){
 
     for(k=kmin;k<=kmax;k++) { //Calcolo l'sse per ogni k
         clusterMaker.k(k);
-        clusterMaker.iterations(750);
+        clusterMaker.iterations(100);
         clusterMaker.data(dataset);
         let cluster = clusterMaker.clusters();
         var distortions = 0;
@@ -84,6 +84,7 @@ function elbowPoint(dataset,min,max){
 
     nodeplotlib.plot(data,layout);
 }
+
 function elbowPoint2D(dataset,min,max){
     let kmin=min; //valore minimo di k
     let kmax=max; //valore massi a cui puo arrivare k
@@ -91,7 +92,7 @@ function elbowPoint2D(dataset,min,max){
 
     for(k=kmin;k<=kmax;k++) { //Calcolo l'sse per ogni k
         clusterMaker.k(k);
-        clusterMaker.iterations(750);
+        clusterMaker.iterations(100);
         clusterMaker.data(dataset);
         let cluster = clusterMaker.clusters();
         var distortions = 0;
@@ -127,11 +128,12 @@ function elbowPoint2D(dataset,min,max){
 
     nodeplotlib.plot(data,layout);
 }
+
 function grafico3D(datasetCluster,k,datasetCompleto){
     var dataToBePlotted=[];
     var i=0;
     clusterMaker.k(k);
-    clusterMaker.iterations(750);
+    clusterMaker.iterations(100);
     clusterMaker.data(datasetCluster);
     let cluster = clusterMaker.clusters();
     //Per ogni claster creato
@@ -162,11 +164,12 @@ function grafico3D(datasetCluster,k,datasetCompleto){
     nodeplotlib.plot(dataToBePlotted,layout);
 
 }
+
 function grafico2D(datasetCluster,k){
     var j=0;
     var data=[]
     clusterMaker.k(k);
-    clusterMaker.iterations(750);
+    clusterMaker.iterations(100);
     clusterMaker.data(datasetCluster);
     var cluster = clusterMaker.clusters();
     while(j<cluster.length) {
@@ -195,11 +198,12 @@ function grafico2D(datasetCluster,k){
     nodeplotlib.plot(data,layout);
 
 }
+
 function graficoRadar(datasetCluster,k,datasetCompleto){
     var j=0;
     var data=[];
     clusterMaker.k(k);
-    clusterMaker.iterations(750);
+    clusterMaker.iterations(100);
     clusterMaker.data(datasetCluster);
     var cluster = clusterMaker.clusters();
     //Per ogni claster creato
@@ -230,6 +234,7 @@ function graficoRadar(datasetCluster,k,datasetCompleto){
 
     nodeplotlib.plot(data,layout);
 }
+
 function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster){
 
     var songs=fromPointsToSong(puntiCluster,datasetCluster,datasetCompleto);
@@ -238,16 +243,10 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
         valoriFeature.push(parseFloat(songs[i][feature]))
     }
 
-    var n_song=[];
-    for(i=0;i<songs.length;i++){
-        n_song.push(i+1);
-    }
-    console.log(valoriFeature);
-
     var trace1 = {
-        y:  n_song,
-        x:valoriFeature,
-        name: 'control',
+        x:  [...Array(songs.length).keys()],
+        y: valoriFeature,
+        name: 'Canzone',
         marker: {
             color: "rgba(255, 100, 102, 0.7)",
             line: {
@@ -256,18 +255,32 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
             }
         },
         opacity: 0.5,
-        type: "histogram",
+        type: "bar",
 
     };
 
-    var data = [trace1];
+    var trace2 = {
+        y: new Array(songs.length).fill(getMean(valoriFeature)),
+        x:  [...Array(songs.length).keys()],
+        marker: {
+            color: "rgba(0, 0, 0, 1)",
+            line: {
+                color:  "rgba(0, 0, 0, 1)",
+                width: 1
+            }
+        },
+        name: 'Media del dataset',
+        type: 'scatter'
+    };
+
+    var data = [trace1, trace2];
     var layout = {
         bargap: 0.05,
         bargroupgap: 0.2,
         barmode: "overlay",
-        title: "Cluster "+n_cluster,
-        xaxis: {title: "Count"},
-        yaxis: {title: "Value"}
+        title: "Cluster "+ n_cluster,
+        xaxis: {title: "Canzone"},
+        yaxis: {title: feature}
     };
     nodeplotlib.plot(data,layout);
 }
@@ -427,8 +440,6 @@ function researchTitleClusterNoPCA(points,datasetCompleto,valore1,valore2,valore
     return genereSongs;
 }
 
-
-
 function fromPointsToSong(points,datasetCluster,datasetCompleto){
     var songs=[];
     for(i=0;i<points.length;i++){
@@ -439,6 +450,7 @@ function fromPointsToSong(points,datasetCluster,datasetCompleto){
     }
     return songs
 }
+
 function generiMusicali(datasetCompleto){
     var generi=[];
     var booleano=true;
@@ -454,6 +466,7 @@ function generiMusicali(datasetCompleto){
     }
     return generi;
 }
+
 function categorizzazioneCluster(points,datasetPCA,datasetCompleto){
     var generiPrincipali=["alternative","jazz","pop","indie","rock","country","dance","hip hop","metal","blues","folk","soul","carnaval","punk","disco","electro","rap","latin","reggae","altri"];
     //1. Prendo tutti i generi del cluster
@@ -536,6 +549,7 @@ function categorizzazioneCluster(points,datasetPCA,datasetCompleto){
 
     return percentuale;
 }
+
 function valoreMedio(songs,featureSong){
     var somma=0;
     var valoriFeature=[];
@@ -550,6 +564,19 @@ function valoreMedio(songs,featureSong){
     }
     console.log(somma/i);
     return somma/i;
+}
+
+function getMean(array){
+    let n = array.length;
+    let sum = 0;
+    array.forEach((value, index, array)=>{
+        if(value!=""||value){
+            sum += value;
+        } else {
+            n--;
+        }
+    });
+    return sum/n;
 }
 
 exports.plotTest = plotTest;
