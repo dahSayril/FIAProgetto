@@ -238,6 +238,7 @@ function histogram(puntiCluster,feature,datasetCluster,datasetCompleto,n_cluster
         xaxis: {title: "Canzone"},
         yaxis: {title: feature}
     };
+    
     nodeplotlib.plot(data,layout);
 
 }
