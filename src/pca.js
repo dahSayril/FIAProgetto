@@ -85,7 +85,6 @@ function pcaProcess(){
     let adData = pca.computeAdjustedData(data, vectors[0], vectors[1], vectors[2]).adjustedData; // N.B. Array di array
 
 
-
     // Nuovo DataSource che conterra' il DataSet trasformato sulle PC individuate
     let myNewDataSource = [];
 

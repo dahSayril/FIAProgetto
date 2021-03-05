@@ -1,2 +1,4 @@
 let kmeans = require('./src/kmeans');
-kmeans.mainKMeans();
+let dbscan = require('./src/dbscan');
+// kmeans.mainKMeans();
+dbscan.dbscan();
