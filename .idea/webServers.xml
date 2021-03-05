@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="10ac1689-c35c-4c28-8544-e9a9712fbe0b" name="test" url="http://localhost:8080/">
+      <webServer id="6217bb69-6a9c-4aa9-a5f7-53c8fb7b5f6b" name="ServerIA" url="http://localhost:8080">
         <fileTransfer mountedRoot="C:\Users\angel\Desktop\FIAProgetto" accessType="MOUNT" port="0" />
       </webServer>
     </option>
