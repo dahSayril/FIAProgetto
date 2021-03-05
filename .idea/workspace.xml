@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad4e4568-61e8-4f3a-a031-7270a9d43ff3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kmeans.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeans.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kmeansNoPCA.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeansNoPCA.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pca.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pca.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,20 +31,46 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web-api-auth-examples-master" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\angel\Desktop\FIAProgetto\SpotifyAPI" />
       <recent name="C:\Users\angel\Desktop\FIAProgetto\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\angel\Desktop\FIAProgetto" />
       <recent name="C:\Users\angel\Desktop\FIAProgetto\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.app.js">
+  <component name="RunManager" selected="Node.js.SpotifyAPI.js">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpotifyAPI.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$/SpotifyAPI">
+      <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+        <browser start="true" url="http://localhost:8080/index.html" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -56,8 +80,15 @@
     <configuration name="pca.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/pca.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Node.js.app.js" />
+      <item itemvalue="Node.js.SpotifyAPI.js" />
+      <item itemvalue="Node.js.kmeans.js" />
+      <item itemvalue="Node.js.pca.js" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.SpotifyAPI.js" />
         <item itemvalue="Node.js.app.js" />
         <item itemvalue="Node.js.pca.js" />
         <item itemvalue="Node.js.kmeans.js" />
@@ -94,6 +125,14 @@
       <workItem from="1614708840584" duration="9491000" />
       <workItem from="1614758958262" duration="5017000" />
       <workItem from="1614765830994" duration="619000" />
+      <workItem from="1614767231642" duration="3705000" />
+      <workItem from="1614773719322" duration="53000" />
+      <workItem from="1614806946929" duration="621000" />
+      <workItem from="1614872189183" duration="7000" />
+      <workItem from="1614885103505" duration="158000" />
+      <workItem from="1614896154283" duration="471000" />
+      <workItem from="1614945216254" duration="1727000" />
+      <workItem from="1614947039999" duration="1130000" />
     </task>
     <servers />
   </component>
@@ -111,5 +150,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
