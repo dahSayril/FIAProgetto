@@ -2,14 +2,14 @@ var pca = require('pca-js');
 var dataForge = require('data-forge');
 require('data-forge-fs');
 
-function pcaProcess(){
+function pcaProcess(datasetDiPartenza){
 
     // Carico il DataSet
-    let dataFrame = dataForge.readFileSync('../datasource/SpotifyCSV.csv').parseCSV();
+    let dataFrame = dataForge.readFileSync(datasetDiPartenza).parseCSV();
 
     // Seleziono solo le features che mi interessano
-    let features = ["Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
-    let totalFeatures=["Index","Title","Artist","Top Genre","Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    let features = ["Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    let totalFeatures=["Index","Title","Artist","Top Genre","Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
     let subDataFrame = dataFrame.subset(features);
 
     var columns = subDataFrame.getColumns();
@@ -63,7 +63,7 @@ function pcaProcess(){
 	});
 
 
-    newDataFrame3.asCSV().writeFileSync('../datasource/datasetStandardizzato.csv');
+    newDataFrame3.asCSV().writeFileSync('./datasource/datasetStandardizzato.csv');
     subDataFrame = newDataFrame3.subset(features);
 
     // DataSet come array di array
@@ -104,7 +104,7 @@ function pcaProcess(){
     let newDataFrame2 = new dataForge.DataFrame({
 		values: myNewDataSource
 	});
-    newDataFrame2.asCSV().writeFileSync('../datasource/datasetComponentiPrincipali.csv');
+    newDataFrame2.asCSV().writeFileSync('./datasource/datasetComponentiPrincipali.csv');
 }
 
 function getStandardDeviation(numbersArr, meanVal) {

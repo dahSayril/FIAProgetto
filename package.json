@@ -25,6 +25,7 @@
     "data-forge-fs": "0.0.9",
     "express": "^4.17.1",
     "nodeplotlib": "^0.7.3",
+    "open": "^8.0.2",
     "pca-js": "^1.0.2",
     "querystring": "^0.2.1",
     "request": "^2.88.2",

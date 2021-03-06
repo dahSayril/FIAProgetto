@@ -1,11 +1,7 @@
 var SpotifyWebApi = require('spotify-web-api-node');
 var express = require('express'); // Express web server framework
-var request = require('request'); // "Request" library
-var cors = require('cors');
-var querystring = require('querystring');
-var cookieParser = require('cookie-parser');
+var open = require('open');
 var dataForge = require('data-forge');
-const { resolve } = require('path');
 require('data-forge-fs');
 
 
@@ -21,15 +17,19 @@ var spotifyApi = new SpotifyWebApi({
 var authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 var app = express();
 
+const server = app.listen(8080);
+console.log('Listening on 8080');
+open('http://localhost:8080/login');
+
 app.get('/login', function(req, res) {
     res.redirect(authorizeURL);
 });
 
 app.get('/callback', function(req, res) {
 
+    console.log("Let' start..");
+
     var code = req.query.code || null;
-    var state = req.query.state || null;
-    var storedState = req.cookies ? req.cookies[stateKey] : null;
 
     var credentials = {
         clientId: client_id,
@@ -63,23 +63,18 @@ app.get('/callback', function(req, res) {
 
         myDataset = [];
 
+        const limit = 50; // Spotify limita le richieste per gli autori a 50 alla volta :(
+
         // Creo dataset con features canzone
-        for (i=0; i < allMySongs.length; i++){
-            const id = allMySongs[i].track.id;
-            const features = await getFeatures(id);
-            mySong = {
-                Index: i,
-                Title: allMySongs[i].track.name,
-                Energy: features.energy,
-                Danceability: features.danceability,
-                'Loudness (dB)': features.loudness,
-                Liveness: features.liveness,
-                Valence: features.valence,
-                'Length (Duration)': features.duration_ms,
-                Acousticness: features.acousticness,
-                Speechiness: features.speechiness
+        for (i=0; i < allMySongs.length; i+=limit){
+            const songIds = allMySongs.slice(i, i + limit).map(x=>x.track.id); // Array di ids di canzoni (usato per fare richiesta features)
+            const artistsIds = allMySongs.slice(i, i + limit).map(x=>x.track.artists[0].id); // Array di ids di artisti (usato per fare richiesta artista)
+            const arrayOfFeatures = await getFeatures(songIds); // Array, ogni valore è un oggetto contente features della canzone in posizione i
+            const arrayOfGenres = await getTopGenre(artistsIds); // Array, ogni valore è un oggetto contente il genere dell'artista in posizione i 
+            for (j = 0; j < arrayOfFeatures.length; j++){
+                mySong = makeSongWrapper(i, j, allMySongs, arrayOfFeatures, arrayOfGenres); // Oggetto canzone ben formattato
+                myDataset.push(mySong);
             }
-            myDataset.push(mySong);
         }
 
         // Creo nuovo DataFrame dal DataSource e poi lo esporto
@@ -87,6 +82,10 @@ app.get('/callback', function(req, res) {
             values: myDataset
         });
         newDataFrame.asCSV().writeFileSync('../datasource/datasetUtente.csv');
+
+        console.log("Ok done gbye");
+
+        server.close();
 
     });
 
@@ -105,17 +104,53 @@ const getSongs = (offset) => {
  });
 };
 
-const getFeatures = (trackId) => {
+const getFeatures = (trackIds) => {
     return new Promise((resolve, reject) => {
-        spotifyApi.getAudioFeaturesForTrack(trackId)
+        spotifyApi.getAudioFeaturesForTracks(trackIds)
             .then((data) => {
-                resolve(data.body);
+                resolve(data.body.audio_features);
             }).catch(error => {
-                console.log("Error: " + JSON.stringify(error));
+                console.log("Error (line 129): " + JSON.stringify(error));
             });
     });
 };
 
-console.log('Listening on 8080');
-app.listen(8080);
+const getTopGenre = (artistIds) => {
+    return new Promise((resolve, reject) => {
+        spotifyApi.getArtists(artistIds)
+            .then((data) => {
+                resolve(data.body.artists.map(x => x.genres[0]));
+            }).catch(error => {
+                console.log("Error (line 140): " + JSON.stringify(error));
+            });
+    });
+};
+
+function makeSong(index, title, artist, genre, features){
+    mySong = {
+        Index: index,
+        Title: title,
+        Artist: artist.name,
+        'Top Genre': genre,
+        'Beats Per Minute (BPM)': features.tempo,
+        Energy: features.energy,
+        Danceability: features.danceability,
+        'Loudness (dB)': features.loudness,
+        Liveness: features.liveness,
+        Valence: features.valence,
+        'Length (Duration)': features.duration_ms,
+        Acousticness: features.acousticness,
+        Speechiness: features.speechiness
+    }
+    return mySong;
+}
+
+function makeSongWrapper(i, j, allMySongs, arrayOfFeatures, arrayOfGenres){
+    const index = j + i;
+    const title = allMySongs[index].track.name
+    const artist = allMySongs[index].track.artists[0];
+    const genre = arrayOfGenres[j];
+    const features = arrayOfFeatures[j];
+    return makeSong(index, title, artist, genre, features);
+}
 

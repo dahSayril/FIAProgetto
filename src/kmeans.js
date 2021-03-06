@@ -14,7 +14,6 @@ function main() {
     dataFrame=dataFrame.parseFloats("PC3");
     let myArray=dataFrame.toRows(); // DataFrame come array di array (ogni riga e' una canzone)
     
-
     // DataFrame2 dal DataSet completo ma dopo normalizzazione e standardizzazione
     let dataFrame2 = dataForge.readFileSync('./datasource/datasetStandardizzato.csv').parseCSV();
     let myArrayCompleto=dataFrame2.toArray();
@@ -122,7 +121,7 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
                 },
                 opacity: 1,
             },
-            text: researchTitleCluster(clusters[i].points,datasetCluster,datasetCompleto), //Ottengo un array di titoli per le canzoni che compongono il claster
+            text: researchTitleCluster(clusters[i].points,datasetCluster,datasetCompleto), //Ottengo un array di titoli per le canzoni che compongono il cluster
             type: 'scatter3d'
         };
 
