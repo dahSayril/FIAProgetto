@@ -5,6 +5,7 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var dataForge = require('data-forge');
+const { resolve } = require('path');
 require('data-forge-fs');
 
 
@@ -38,47 +39,82 @@ app.get('/callback', function(req, res) {
 
     spotifyApi = new SpotifyWebApi(credentials);
 
-    spotifyApi.authorizationCodeGrant(code).then(
-        function(data) {
-            console.log('The token expires in ' + data.body['expires_in']);
-            console.log('The access token is ' + data.body['access_token']);
-            console.log('The refresh token is ' + data.body['refresh_token']);
 
-            // Set the access token on the API object to use it in later calls
-            spotifyApi.setAccessToken(data.body['access_token']);
-            spotifyApi.setRefreshToken(data.body['refresh_token']);
-            spotifyApi.getMySavedTracks({
-                limit : 50,
-                offset: 1
-            })
-                .then(function(data) {
-                    console.log('Done! '+data.body.items.length);
-                    var tracks=data.body.items;
-                    for (i=0;i<tracks.length;i++){
-                        console.log(tracks[i]);
-                    }
-                }, function(err) {
-                    console.log('Something went wrong!', err);
-                });
-
-        },
-        function(err) {
-            console.log('Something went wrong!', err);
+    spotifyApi.authorizationCodeGrant(code)
+    .then(data => {
+        // Richiesta fittizia (solo una canzone) per accedere al totale delle canzoni
+        spotifyApi.setAccessToken(data.body['access_token']);
+        return spotifyApi.getMySavedTracks({
+            limit : 1
+        });
+    })
+    .then(async data => {
+        const total = data.body.total; // Quante canzoni ho (totale canzoni)
+        const limit = 50; // Quante canzoni prendo alla volta (max. 50 by Spotify)
+        const n = (total/limit); // Quante volte devo iterare
+        allMySongs = [];
+        for (i = 0; i < n; i++){
+            let subset = await getSongs(limit*i);
+            allMySongs.push(...subset);
         }
-    );
+        return allMySongs;
+    })
+    .then(async allMySongs => {
 
+        myDataset = [];
 
+        // Creo dataset con features canzone
+        for (i=0; i < allMySongs.length; i++){
+            const id = allMySongs[i].track.id;
+            const features = await getFeatures(id);
+            mySong = {
+                Index: i,
+                Title: allMySongs[i].track.name,
+                Energy: features.energy,
+                Danceability: features.danceability,
+                'Loudness (dB)': features.loudness,
+                Liveness: features.liveness,
+                Valence: features.valence,
+                'Length (Duration)': features.duration_ms,
+                Acousticness: features.acousticness,
+                Speechiness: features.speechiness
+            }
+            myDataset.push(mySong);
+        }
 
+        // Creo nuovo DataFrame dal DataSource e poi lo esporto
+        let newDataFrame = new dataForge.DataFrame({
+            values: myDataset
+        });
+        newDataFrame.asCSV().writeFileSync('../datasource/datasetUtente.csv');
 
+    });
 
-
-
-
-
-
-
+    res.redirect("http://www.google.it");
 
 });
+
+const getSongs = (offset) => {
+ return new Promise((resolve, reject) => {
+    spotifyApi.getMySavedTracks({
+        limit : 50,
+        offset: offset
+    }).then(data =>{
+        resolve(data.body.items);
+    });
+ });
+};
+
+const getFeatures = (trackId) => {
+    return new Promise((resolve, reject) => {
+        spotifyApi.getAudioFeaturesForTrack(trackId)
+            .then((data) => {
+                resolve(data.body);
+            }).catch(error => {
+                console.log("Error: " + JSON.stringify(error));
+            });
+    });
+};
 
 console.log('Listening on 8080');
 app.listen(8080);
