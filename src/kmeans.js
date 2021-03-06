@@ -22,7 +22,7 @@ function main() {
     const elbowPointIndex = elbowPoint(myArray,2,10);
     
     //Calcolo cluster
-    const cluster = makeCluster(elbowPointIndex, 200, myArray);
+    const cluster = makeCluster(elbowPointIndex, 1000, myArray);
 
     //Grafici cluster
     grafico3D(cluster,myArray,myArrayCompleto);

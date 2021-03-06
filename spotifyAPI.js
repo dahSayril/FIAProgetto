@@ -1,13 +1,10 @@
-let pca = require('./src/pca');
-let kmeans = require('./src/kmeans');
+const pca = require('./src/pca');
+const kmeans = require('./src/kmeans');
 
-
-
-
-var SpotifyWebApi = require('spotify-web-api-node');
-var express = require('express'); // Express web server framework
-var open = require('open');
-var dataForge = require('data-forge');
+const SpotifyWebApi = require('spotify-web-api-node');
+const express = require('express'); // Express web server framework
+const open = require('open');
+const dataForge = require('data-forge');
 require('data-forge-fs');
 
 
@@ -34,7 +31,7 @@ sporifyAPI.get('/login', function(req, res) {
 
 sporifyAPI.get('/callback', function(req, res) {
 
-    console.log("Let' start..");
+    console.log("Let's start..");
 
     var code = req.query.code || null;
 
@@ -67,12 +64,12 @@ sporifyAPI.get('/callback', function(req, res) {
         return allMySongs;
     })
     .then(async allMySongs => {
-        var songOttenute;
+        let songOttenute = false;
         myDataset = [];
         const limit = 50; // Spotify limita le richieste per gli autori a 50 alla volta :(
 
         // Creo dataset con features canzone
-        for (i=0; i < allMySongs.length; i+=limit){
+        for (i = 0; i < allMySongs.length; i+=limit){
             const songIds = allMySongs.slice(i, i + limit).map(x=>x.track.id); // Array di ids di canzoni (usato per fare richiesta features)
             const artistsIds = allMySongs.slice(i, i + limit).map(x=>x.track.artists[0].id); // Array di ids di artisti (usato per fare richiesta artista)
             const arrayOfFeatures = await getFeatures(songIds); // Array, ogni valore è un oggetto contente features della canzone in posizione i
@@ -90,80 +87,63 @@ sporifyAPI.get('/callback', function(req, res) {
         newDataFrame.asCSV().writeFileSync('./datasource/datasetUtente.csv');
 
         console.log("Ok done gbye");
-        songOttenute=true;
+        
+        songOttenute = true;
         server.close();
         return songOttenute;
-
     })
-        .then(async songOttenute => {
-            if(songOttenute==true) {
-                pca.pcaProcess('./datasource/datasetUtente.csv');
-                var playlists=kmeans.mainKMeans();
-                console.log(playlists.length);
-                console.log("Cluster creati");
-
-                var tracksId=[]; //Creo un array di array dove gli array interni contengono l'uri delle canzoni di una playlist
-                var i=0;
-                while (i<playlists.length){
-                    var id=[];
-                    for(j=0;j<playlists[i].length;j++)
-                        id.push(playlists[i][j].Index);
-                    tracksId.push(id);
-                    i++;
+    .then(songOttenute => {
+        if(songOttenute) {
+            pca.pcaProcess('./datasource/datasetUtente.csv');
+            const playlists = kmeans.mainKMeans();
+            console.log("Cluster creati");
+            let tracksId = []; //Creo un array di array dove gli array interni contengono l'uri delle canzoni di una playlist
+            for (i = 0; i < playlists.length; i++){
+                var ids = [];
+                for(j = 0; j < playlists[i].length; j++){
+                    ids.push(playlists[i][j].Index);
                 }
-                return tracksId;
+                tracksId.push(ids);
             }
-        }).then(async tracksId => {
-
-        for (i=0; i < tracksId.length; i++){
-            getNum(i,tracksId);
+            return tracksId;
         }
-
-
-
     })
-
-
-
+    .then(async tracksId => {
+        for (i = 0; i < tracksId.length; i++){
+            await createPlaylist(i,tracksId);
+        }
+    });
 
     res.redirect("http://www.google.it");
 
 });
 
 
-
-const getNum = (i,tracksId) => {
+const createPlaylist = (i,tracksId) => {
     return new Promise((resolve, reject) => {
-        spotifyApi.createPlaylist('Cluster' + i, {'description': 'My description', 'public': true})
-            .then(function (data) {
+        spotifyApi.createPlaylist('Cluster' + i, {'description': 'KMeans clustering on my lib', 'public': true})
+            .then(async data => {
                 console.log('Created playlist!');
-                var supporto=[data.body.id,tracksId[i]];
-                return supporto
-            }, function (err) {
-                console.log('Something went wrong!', err);
-            }).then(async supporto => {
-            spotifyApi.addTracksToPlaylist(supporto[0], supporto[1])
-                .then(function (data) {
-                    console.log('Added tracks to playlist!');
-                }, function (err) {
-                    console.log('Something went wrong!', err);
-                });
-
-        })
+                var supporto = [data.body.id,tracksId[i]]; // Primo elemento id playlist, secondo elemento canzoni da aggiungere
+                const limit = 100; // Spotify's bad :(
+                const numberOfSongsToAdd = supporto[1].length;
+                for (i = 0; i < numberOfSongsToAdd; i += limit){
+                    await spotifyApi.addTracksToPlaylist(supporto[0], supporto[1].slice(i, i+limit));
+                }
+                resolve("All right bro");
+            })
     });
 };
 
-
-
 const getSongs = (offset) => {
- return new Promise((resolve, reject) => {
-    spotifyApi.getMySavedTracks({
-        limit : 50,
-        offset: offset
-    }).then(data =>{
-        resolve(data.body.items);
+    return new Promise((resolve, reject) => {
+        spotifyApi.getMySavedTracks({
+            limit : 50,
+            offset: offset
+        }).then(data =>{
+            resolve(data.body.items);
+        });
     });
- });
 };
 
 const getFeatures = (trackIds) => {
@@ -189,9 +169,9 @@ const getTopGenre = (artistIds) => {
 };
 
 
-function makeSong(index, title, artist, genre, features){
+function makeSong(uri, title, artist, genre, features){
     mySong = {
-        Index: index,
+        Index: uri,
         Title: title,
         Artist: artist.name,
         'Top Genre': genre,
