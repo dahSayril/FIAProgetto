@@ -30,6 +30,16 @@ function main() {
     
     makeHistograms(cluster, "Acousticness", myArray, myArrayCompleto);
 
+
+    //Playlists
+    let playlists=[];
+    var i=0;
+    while (i<cluster.length){
+        var playlist= fromPointsToSong(cluster[i].points,myArray,myArrayCompleto);
+        playlists.push(playlist);
+        i++;
+    }
+    return playlists;
 }
 
 /* Esegue algoritmo kmeans e ritorna un array con centroidi e punti */

@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad4e4568-61e8-4f3a-a031-7270a9d43ff3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpotifyAPI/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/SpotifyAPI/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpotifyAPI/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/SporifyAPI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource/datasetUtente.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetUtente.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kmeans.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeans.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pca.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pca.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web-api-auth-examples-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -67,10 +70,10 @@
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/index.html">
       <method v="2" />
     </configuration>
-    <configuration name="SpotifyAPI.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$/SpotifyAPI">
+    <configuration name="SpotifyAPI.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="SporifyAPI.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="app.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="kmeans.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/kmeans.js" working-dir="$PROJECT_DIR$/src">
@@ -89,8 +92,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.SpotifyAPI.js" />
-        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Node.js.app.js" />
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Node.js.pca.js" />
         <item itemvalue="Node.js.kmeans.js" />
       </list>
@@ -139,6 +142,10 @@
       <workItem from="1614959786879" duration="963000" />
       <workItem from="1614969982988" duration="28000" />
       <workItem from="1614978564316" duration="5189000" />
+      <workItem from="1615047258111" duration="780000" />
+      <workItem from="1615053307233" duration="6868000" />
+      <workItem from="1615060947909" duration="54000" />
+      <workItem from="1615061029030" duration="7608000" />
     </task>
     <servers />
   </component>
