@@ -75,39 +75,38 @@ function pcaProcess(datasetDiPartenza){
     // Calcolo autovettori e autovalori per PCA
     var vectors = pca.getEigenVectors(data);
 
-    // Percentuale di accuratezza considerando il primo, i primi due e i primi tre autovettori
-    // console.log("Percentuali: ");
-    // let v = [];
-    // let percentuale;
-    // for(let i = 0; i < vectors.length; i++) {
-    //     v.push(vectors[i]);
-    //     percentuale=pca.computePercentageExplained(vectors, ...v);
-    //     console.log(i+1 +" : "+percentuale);
-    //     if(percentuale>=0.80) {
-    //         break;
-    //     }
-    // }
+    //Percentuale di accuratezza considerando il primo, i primi due e i primi tre autovettori
+     console.log("Percentuali: ");
+     let v = [];
+     let percentuale;
+     for(let i = 0; i < vectors.length; i++) {
+         v.push(vectors[i]);
+         percentuale=pca.computePercentageExplained(vectors, ...v);
+         console.log(i+1 +" : "+percentuale);
+         if(percentuale>=0.80) {
+             break;
+         }
+     }
 
-    // let adData = pca.computeAdjustedData(data, ...v).adjustedData; // N.B. Array di array
+     let adData = pca.computeAdjustedData(data, ...v).adjustedData; // N.B. Array di array
 
-    console.log("Percentuali: ");
-    console.log("1: " + pca.computePercentageExplained(vectors,vectors[0]));
-    console.log("2: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1]));
-    console.log("3: " + pca.computePercentageExplained(vectors,vectors[0], vectors[1], vectors[2]));
-    
-    // DataSet trasformato sulle prime quattro componenti principali individuate
-    let adData = pca.computeAdjustedData(data, vectors[0], vectors[1], vectors[2]).adjustedData;
+
 
     // Nuovo DataSource che conterra' il DataSet trasformato sulle PC individuate
     let myNewDataSource = [];
+    let elementi=[];
+    //For per ottenere le scritte PC1,PC2... in base a quanti vettori ho usato per la pca
+    for(j=0;j<adData.length;j++) {
+        elementi.push('PC'+(j+1));
+    }
 
     // Riempo il nuovo DataSource
-    for (i = 0; i < dimension; i++){
+    for (let i = 0; i < dimension; i++){
 
         let mySong = {};
-        mySong.PC1 = adData[0][i];
-        mySong.PC2 = adData[1][i];
-        mySong.PC3 = adData[2][i];
+        for(j=0;j<adData.length;j++)
+            mySong[elementi[j]] = adData[j][i];
+
 
         myNewDataSource.push(mySong);
 

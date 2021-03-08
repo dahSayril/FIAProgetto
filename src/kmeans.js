@@ -9,9 +9,10 @@ function main() {
 
     // DataFrame con Componenti Principali
     let dataFrame = dataForge.readFileSync('./datasource/datasetComponentiPrincipali.csv').parseCSV();
-    dataFrame=dataFrame.parseFloats("PC1");
-    dataFrame=dataFrame.parseFloats("PC2");
-    dataFrame=dataFrame.parseFloats("PC3");
+    //1. Ottengo gli identificativi delle colonne generate dalla pca
+    let columnNames=dataFrame.getColumnNames();
+    for(i=0;i<columnNames.length;i++)
+        dataFrame=dataFrame.parseFloats(columnNames[i]);
     let myArray=dataFrame.toRows(); // DataFrame come array di array (ogni riga e' una canzone)
     
     // DataFrame2 dal DataSet completo ma dopo normalizzazione e standardizzazione
@@ -20,7 +21,7 @@ function main() {
     
     //Grafico Elbow Point
     const elbowPointIndex = elbowPoint(myArray,2,10);
-    
+    console.log(elbowPointIndex);
     //Calcolo cluster
     const cluster = makeCluster(elbowPointIndex, 1000, myArray);
 
@@ -28,7 +29,7 @@ function main() {
     grafico3D(cluster,myArray,myArrayCompleto);
     graficoRadar(cluster, myArray, myArrayCompleto);
     
-    makeHistograms(cluster, "Acousticness", myArray, myArrayCompleto);
+    makeHistograms(cluster, "Beats Per Minute (BPM)", myArray, myArrayCompleto);
 
 
     //Playlists
@@ -161,11 +162,11 @@ function graficoRadar(clusters, datasetCluster,datasetCompleto){
         var songs=fromPointsToSong(clusters[j].points,datasetCluster,datasetCompleto);
         var trace = {
             type: 'scatterpolar',
-            r: [ valoreMedio(songs,"Energy"), valoreMedio(songs,"Danceability"),
+            r: [ valoreMedio(songs,"Beats Per Minute (BPM)"),valoreMedio(songs,"Energy"), valoreMedio(songs,"Danceability"),
                 valoreMedio(songs,"Loudness (dB)"), valoreMedio(songs,"Liveness"),
                 valoreMedio(songs,"Valence"), valoreMedio(songs,"Length (Duration)"),
                 valoreMedio(songs,"Acousticness"), valoreMedio(songs,"Speechiness")],
-            theta: ["Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"],
+            theta: ["Beats Per Minute (BPM)","Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"],
             fill: 'toself',
             name: 'Cluster '+ j,
         };
@@ -414,12 +415,28 @@ function fromPointsToSong(points,datasetCluster,datasetCompleto){
     var songs=[];
     for(i=0;i<points.length;i++){
         for(j=0;j<datasetCluster.length;j++){
-            if(datasetCluster[j][0]==points[i][0] && datasetCluster[j][1]==points[i][1] && datasetCluster[j][2]==points[i][2] )
+            if(control_point(points[i],datasetCluster[j]))
                 songs.push(datasetCompleto[j]);
         }
     }
+    console.log(songs);
     return songs
 }
+
+
+
+function control_point(point,pointControl){
+    var riscontro=false;
+    for(cordinata=0;cordinata<point.length;cordinata++){
+        if(point[cordinata]==pointControl[cordinata])
+            riscontro=true;
+        else
+            riscontro=false;
+    }
+    return riscontro;
+}
+
+
 
 function generiMusicali(datasetCompleto){
     var generi=[];
