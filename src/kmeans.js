@@ -3,12 +3,12 @@ var dataForge = require('data-forge');
 var clusterMaker = require('clusters');
 require('data-forge-fs');
 
-function main() {
+function main(pathPC, pathStandardizzato) {
     
     /* Datasource manipulation */
 
     // DataFrame con Componenti Principali
-    let dataFrame = dataForge.readFileSync('./datasource/datasetComponentiPrincipali.csv').parseCSV();
+    let dataFrame = dataForge.readFileSync(pathPC).parseCSV();
     //1. Ottengo gli identificativi delle colonne generate dalla pca
     let columnNames=dataFrame.getColumnNames();
     for(i=0;i<columnNames.length;i++)
@@ -16,31 +16,31 @@ function main() {
     let myArray=dataFrame.toRows(); // DataFrame come array di array (ogni riga e' una canzone)
     
     // DataFrame2 dal DataSet completo ma dopo normalizzazione e standardizzazione
-    let dataFrame2 = dataForge.readFileSync('./datasource/datasetStandardizzato.csv').parseCSV();
+    let dataFrame2 = dataForge.readFileSync(pathStandardizzato).parseCSV();
     let myArrayCompleto=dataFrame2.toArray();
     
     //Grafico Elbow Point
     const elbowPointIndex = elbowPoint(myArray,2,10);
     console.log(elbowPointIndex);
     //Calcolo cluster
-    const cluster = makeCluster(elbowPointIndex, 1000, myArray);
+    const clusters = makeCluster(elbowPointIndex, 1000, myArray);
 
     //Grafici cluster
-    grafico3D(cluster,myArray,myArrayCompleto);
-    graficoRadar(cluster, myArray, myArrayCompleto);
+    // grafico3D(clusters,myArray,myArrayCompleto);
+    // graficoRadar(clusters, myArray, myArrayCompleto);
     
-    makeHistograms(cluster, "Beats Per Minute (BPM)", myArray, myArrayCompleto);
+    // makeHistograms(clusters, "Beats Per Minute (BPM)", myArray, myArrayCompleto);
 
 
     //Playlists
     let playlists=[];
     var i=0;
-    while (i<cluster.length){
-        var playlist= fromPointsToSong(cluster[i].points,myArray,myArrayCompleto);
+    while (i<clusters.length){
+        var playlist= fromPointsToSong(clusters[i].points,myArray,myArrayCompleto);
         playlists.push(playlist);
         i++;
     }
-    return playlists;
+    return [clusters, playlists, myArray, myArrayCompleto];
 }
 
 /* Esegue algoritmo kmeans e ritorna un array con centroidi e punti */
@@ -141,12 +141,17 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
 
     }
 
-    var layout = {margin: {
+    var layout = {
+        margin: {
             l: 0,
             r: 0,
             b: 0,
             t: 0
-        }};
+        },
+        legend: {
+            "orientation": "h"
+        }
+    };
     
     nodeplotlib.plot(dataToBePlotted,layout);
 
@@ -419,7 +424,6 @@ function fromPointsToSong(points,datasetCluster,datasetCompleto){
                 songs.push(datasetCompleto[j]);
         }
     }
-    console.log(songs);
     return songs
 }
 
@@ -553,3 +557,6 @@ function valoreMedio(array, feature = undefined){
 }
 
 exports.mainKMeans = main;
+exports.grafico3D = grafico3D;
+exports.graficoRadar = graficoRadar;
+exports.makeHistograms = makeHistograms;

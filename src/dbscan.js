@@ -5,12 +5,12 @@ require('data-forge-fs');
 
 const minPoints = 10;
 
-function main(){
+function main(pathPC){
 
     /* Datasource manipulation */
 
     // DataFrame con Componenti Principali
-    let dataFrame = dataForge.readFileSync('./datasource/datasetComponentiPrincipali.csv').parseCSV();
+    let dataFrame = dataForge.readFileSync(pathPC).parseCSV();
     dataFrame=dataFrame.parseFloats("PC1");
     dataFrame=dataFrame.parseFloats("PC2");
     dataFrame=dataFrame.parseFloats("PC3");
@@ -20,18 +20,30 @@ function main(){
     arrayNumeroElementiPrimoCluster = [];
     arrayNumeroElementiNoise = [];
 
-    for (e = 0.05; e < 0.1; e += 0.005){
-        
+    deltas = [];
+
+    for (e = 0.07; e < 0.15; e += 0.005){
+
         arrayEpsilon.push(e);
         
         const result = makeCluster(myArray, e, minPoints);
-        arrayNumeroElementiPrimoCluster.push(result.clusters[0].length);
+        indexOfBiggest = findIndexOfBiggestArray(result.clusters);
+
+        lengthOfBiggest = result.clusters[indexOfBiggest].length;
+        lengthOfNoise = result.noise.length;
+
+        arrayNumeroElementiPrimoCluster.push(lengthOfBiggest);
         arrayNumeroElementiNoise.push(result.noise.length);
+
+        delta = Math.abs(lengthOfBiggest - lengthOfNoise);
+        deltas.push([delta, e]);
 
     }
 
+    optimalE = findOptimalE(deltas);
+    
     graficoRelazione(arrayEpsilon, arrayNumeroElementiPrimoCluster, arrayNumeroElementiNoise);
-    grafico3D(makeCluster(myArray, 0.075, minPoints).clusters, myArray);
+    grafico3D(makeCluster(myArray, optimalE, minPoints).clusters, myArray);
 
 }
 
@@ -127,6 +139,17 @@ function calcolaDistanze(puntoA, puntoB){
         somma += Math.pow(puntoA[i]-puntoB[i],2);
     }
     return Math.sqrt(somma);
+}
+
+function findIndexOfBiggestArray(myArray){
+    const lengths = myArray.map(a=>a.length);
+    return lengths.indexOf(Math.max(...lengths));
+}
+
+function findOptimalE(myDeltas){
+    const deltas = myDeltas.map(val => val[0]); // tutti i delta;
+    const index = deltas.indexOf(Math.min(...deltas)); // indice delta più piccolo;
+    return myDeltas[index][1];
 }
 
 exports.dbscan = main;
