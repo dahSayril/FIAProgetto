@@ -94,8 +94,8 @@ sporifyAPI.get('/callback', function(req, res) {
     })
     .then(songOttenute => {
         if(songOttenute) {
-            pca.pcaProcess('./datasource/datasetUtente.csv');
-            const playlists = kmeans.mainKMeans()[1];
+            const paths = pca.pcaProcess('./datasource/datasetUtente.csv');
+            const playlists = kmeans.mainKMeans(paths[1], paths[0])[1];
             console.log("Cluster creati");
             let tracksId = []; //Creo un array di array dove gli array interni contengono l'uri delle canzoni di una playlist
             for (i = 0; i < playlists.length; i++){
