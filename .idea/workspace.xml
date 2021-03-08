@@ -5,9 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetComponentiPrincipali.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetStandardizzato.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasource/datasetUtente.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasource/datasetUtente.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spotifyAPI.js" beforeDir="false" afterPath="$PROJECT_DIR$/spotifyAPI.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kmeans.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kmeans.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pca.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pca.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,14 +51,16 @@
       <recent name="C:\Users\angel\Desktop\FIAProgetto\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.app.js">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Node.js.spotifyAPI.js">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,8 +89,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.app.js" />
         <item itemvalue="Node.js.spotifyAPI.js" />
+        <item itemvalue="Node.js.app.js" />
         <item itemvalue="Node.js.SpotifyAPI.js" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Node.js.pca.js" />
@@ -145,6 +146,7 @@
       <workItem from="1615061029030" duration="7608000" />
       <workItem from="1615157918936" duration="498000" />
       <workItem from="1615196820748" duration="1995000" />
+      <workItem from="1615203569017" duration="2240000" />
     </task>
     <servers />
   </component>
