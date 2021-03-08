@@ -2,6 +2,9 @@ var pca = require('pca-js');
 var dataForge = require('data-forge');
 require('data-forge-fs');
 
+const standardizzatoEsportato = './datasource/datasetStandardizzato.csv';
+const pcEsportato = './datasource/datasetComponentiPrincipali.csv';
+
 function pcaProcess(datasetDiPartenza){
 
     // Carico il DataSet
@@ -63,7 +66,7 @@ function pcaProcess(datasetDiPartenza){
 	});
 
 
-    newDataFrame3.asCSV().writeFileSync('./datasource/datasetStandardizzato.csv');
+    newDataFrame3.asCSV().writeFileSync(standardizzatoEsportato);
     subDataFrame = newDataFrame3.subset(features);
 
     // DataSet come array di array
@@ -116,7 +119,10 @@ function pcaProcess(datasetDiPartenza){
     let newDataFrame2 = new dataForge.DataFrame({
 		values: myNewDataSource
 	});
-    newDataFrame2.asCSV().writeFileSync('./datasource/datasetComponentiPrincipali.csv');
+    newDataFrame2.asCSV().writeFileSync(pcEsportato);
+
+    return [standardizzatoEsportato, pcEsportato];
+    
 }
 
 function getStandardDeviation(numbersArr, meanVal) {
