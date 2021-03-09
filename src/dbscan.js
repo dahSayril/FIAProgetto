@@ -19,21 +19,28 @@ function main(pathPC){
     arrayEpsilon = [];
     arrayNumeroElementiPrimoCluster = [];
     arrayNumeroElementiNoise = [];
+    arrayNumeroCluster = [];
 
     deltas = [];
 
-    for (e = 0.07; e < 0.15; e += 0.005){
+    for (e = 0.43; e <= 0.8; e += 0.03){
+
+        console.log("E: " + e);
 
         arrayEpsilon.push(e);
         
         const result = makeCluster(myArray, e, minPoints);
+        // console.log("Result: " + JSON.stringify(result, null, " "));
+        console.log("Numero cluster: " + result.clusters.length);
+        console.log("Noise: " + result.noise.length);
         indexOfBiggest = findIndexOfBiggestArray(result.clusters);
 
-        lengthOfBiggest = result.clusters[indexOfBiggest].length;
-        lengthOfNoise = result.noise.length;
+        lengthOfBiggest = result.clusters[indexOfBiggest]?result.clusters[indexOfBiggest].length:0;
+        lengthOfNoise = result.noise?result.noise.length:0;
 
         arrayNumeroElementiPrimoCluster.push(lengthOfBiggest);
-        arrayNumeroElementiNoise.push(result.noise.length);
+        arrayNumeroElementiNoise.push(lengthOfNoise);
+        arrayNumeroCluster.push(result.clusters?result.clusters.length:0);
 
         delta = Math.abs(lengthOfBiggest - lengthOfNoise);
         deltas.push([delta, e]);
@@ -41,9 +48,12 @@ function main(pathPC){
     }
 
     optimalE = findOptimalE(deltas);
+    console.log("Optimal e: " + optimalE);
     
     graficoRelazione(arrayEpsilon, arrayNumeroElementiPrimoCluster, arrayNumeroElementiNoise);
+    graficoEpsilonNumeroCluster(arrayEpsilon, arrayNumeroCluster);
     grafico3D(makeCluster(myArray, optimalE, minPoints).clusters, myArray);
+    grafico3D(makeCluster(myArray, 0.55, minPoints).clusters, myArray);
 
 }
 
@@ -116,6 +126,30 @@ function graficoRelazione(epsilons, primocluster, noise){
         },
         yaxis: {
             title: 'Numero elementi',
+        }
+    };
+
+    nodeplotlib.plot(data,layout);
+
+}
+
+function graficoEpsilonNumeroCluster(epsilons, arrayNumeroCluster){
+
+    let trace1 = {
+        x: epsilons,
+        y: arrayNumeroCluster,
+        type: 'scatter',
+        name: 'Numero di clusters'
+    };
+
+    let data = [trace1];
+    let layout = {
+        title: 'DBSCAN correlation between parameters',
+        xaxis: {
+            title: 'Epsilon',
+        },
+        yaxis: {
+            title: 'Numero clusters',
         }
     };
 

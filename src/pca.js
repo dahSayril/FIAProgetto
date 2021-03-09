@@ -29,21 +29,21 @@ function pcaProcess(datasetDiPartenza,percentualeOttima){
         myColumns.push(myColumn);
     }
 
-    //Normalizzazione valori tra 0 e 1
-    for(i=0;i<myColumns.length;i++){
-        var max=-100,min=100;
-        //Ricero il massimo e il minimo
-        for(j=0;j<myColumns[i].length;j++){
-            if(max<myColumns[i][j])
-                max=myColumns[i][j];
-            if(min>myColumns[i][j])
-                min=myColumns[i][j];
-        }
-        //Normalizzo i valori
-        for(j=0;j<myColumns[i].length;j++){
-            myColumns[i][j]=normalize(myColumns[i][j],max,min);
-        }
-    }
+    // //Normalizzazione valori tra 0 e 1
+    // for(i=0;i<myColumns.length;i++){
+    //     var max=-100,min=100;
+    //     //Ricero il massimo e il minimo
+    //     for(j=0;j<myColumns[i].length;j++){
+    //         if(max<myColumns[i][j])
+    //             max=myColumns[i][j];
+    //         if(min>myColumns[i][j])
+    //             min=myColumns[i][j];
+    //     }
+    //     //Normalizzo i valori
+    //     for(j=0;j<myColumns[i].length;j++){
+    //         myColumns[i][j]=normalize(myColumns[i][j],max,min);
+    //     }
+    // }
 
 
     let newDataSource = [];
