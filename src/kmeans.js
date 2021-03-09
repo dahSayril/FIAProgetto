@@ -434,6 +434,59 @@ function valoreMedio(array, feature = undefined){
 }
 
 
+function graficoElbowPointByVarianza(gomito,varianza){
+    //Generazione del grafico
+    var trace1 = {
+        x: varianza,
+        y: gomito,
+        type: 'scatter'
+    };
+    var data = [trace1];
+    var layout = {
+        title: 'Gomito data la varianza della PCA',
+        xaxis: {
+            title: 'Varianza',
+        },
+        yaxis: {
+            title: 'Gomito',
+        }
+    };
+
+    nodeplotlib.plot(data,layout);
+}
+
+function graficoNumeroPuntiClusterByVarianza(numeroPunti,numeroCluster,percentualVarianza){
+
+    var data = [];
+    var i=0;
+    while (i<percentualVarianza.length){
+        var trace = {
+            x: numeroCluster[i],
+            y: numeroPunti[i],
+            name: 'Percentual Varianza:'+ percentualVarianza[i],
+            type: 'scatter'
+        };
+        data.push(trace)
+        i++;
+    }
+
+    var layout = {
+        title: 'Variazione numero punti di un cluster in base alla varianza della PCA',
+        xaxis: {
+            title: 'Cluster',
+        },
+        yaxis: {
+            title: 'Numero Punti',
+        }
+    };
+
+    nodeplotlib.plot(data,layout);
+}
+
+
+
+exports.graficoNumeroPuntiClusterByVarianza=graficoNumeroPuntiClusterByVarianza;
+exports.graficoElbowPointByVarianza=graficoElbowPointByVarianza;
 exports.mainKMeans = main;
 exports.grafico3D = grafico3D;
 exports.graficoRadar = graficoRadar;
