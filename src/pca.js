@@ -1,3 +1,4 @@
+var nodeplotlib = require('nodeplotlib');
 var pca = require('pca-js');
 var dataForge = require('data-forge');
 require('data-forge-fs');
@@ -5,7 +6,7 @@ require('data-forge-fs');
 const standardizzatoEsportato = './datasource/datasetStandardizzato.csv';
 const pcEsportato = './datasource/datasetComponentiPrincipali.csv';
 
-function pcaProcess(datasetDiPartenza){
+function pcaProcess(datasetDiPartenza,percentualeOttima){
 
     // Carico il DataSet
     let dataFrame = dataForge.readFileSync(datasetDiPartenza).parseCSV();
@@ -28,21 +29,21 @@ function pcaProcess(datasetDiPartenza){
         myColumns.push(myColumn);
     }
 
-    //Normalizzazione valori tra 0 e 1
-    for(i=0;i<myColumns.length;i++){
-        var max=-100,min=100;
-        //Ricero il massimo e il minimo
-        for(j=0;j<myColumns[i].length;j++){
-            if(max<myColumns[i][j])
-                max=myColumns[i][j];
-            if(min>myColumns[i][j])
-                min=myColumns[i][j];
-        }
-        //Normalizzo i valori
-        for(j=0;j<myColumns[i].length;j++){
-            myColumns[i][j]=normalize(myColumns[i][j],max,min);
-        }
-    }
+    // //Normalizzazione valori tra 0 e 1
+    // for(i=0;i<myColumns.length;i++){
+    //     var max=-100,min=100;
+    //     //Ricero il massimo e il minimo
+    //     for(j=0;j<myColumns[i].length;j++){
+    //         if(max<myColumns[i][j])
+    //             max=myColumns[i][j];
+    //         if(min>myColumns[i][j])
+    //             min=myColumns[i][j];
+    //     }
+    //     //Normalizzo i valori
+    //     for(j=0;j<myColumns[i].length;j++){
+    //         myColumns[i][j]=normalize(myColumns[i][j],max,min);
+    //     }
+    // }
 
 
     let newDataSource = [];
@@ -86,7 +87,7 @@ function pcaProcess(datasetDiPartenza){
          v.push(vectors[i]);
          percentuale=pca.computePercentageExplained(vectors, ...v);
          console.log(i+1 +" : "+percentuale);
-         if(percentuale>=0.80) {
+         if(percentuale>=percentualeOttima) {
              break;
          }
      }
@@ -165,5 +166,110 @@ function normalize(val, max, min) {
 }
 
 
+function graficoComonetiPrecisioneVarianza(datasetDiPartenza){
+    // Carico il DataSet
+    let dataFrame = dataForge.readFileSync(datasetDiPartenza).parseCSV();
+
+    // Seleziono solo le features che mi interessano
+    let features = ["Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    let totalFeatures=["Index","Title","Artist","Top Genre","Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    let subDataFrame = dataFrame.subset(features);
+
+    var columns = subDataFrame.getColumns();
+    var arrayOfColumns = columns.toArray();
+    var arrayCompleto= dataFrame.toArray();
+
+    let myColumns = []; // Array di array (ogni array e' una colonna)
+
+    for (var column in arrayOfColumns) {
+        let myColumn = [];
+        myColumn.push(...arrayOfColumns[column].series.content.values);
+        standardize(myColumn);
+        myColumns.push(myColumn);
+    }
+
+    //Normalizzazione valori tra 0 e 1
+    for(i=0;i<myColumns.length;i++){
+        var max=-100,min=100;
+        //Ricero il massimo e il minimo
+        for(j=0;j<myColumns[i].length;j++){
+            if(max<myColumns[i][j])
+                max=myColumns[i][j];
+            if(min>myColumns[i][j])
+                min=myColumns[i][j];
+        }
+        //Normalizzo i valori
+        for(j=0;j<myColumns[i].length;j++){
+            myColumns[i][j]=normalize(myColumns[i][j],max,min);
+        }
+    }
+
+
+    let newDataSource = [];
+    for(let i = 0; i < myColumns[0].length; i++) {
+
+        let mySong = { };
+        mySong[totalFeatures[0]]=arrayCompleto[i].Index;
+        mySong[totalFeatures[1]]=arrayCompleto[i].Title;
+        mySong[totalFeatures[2]]=arrayCompleto[i].Artist;
+        mySong[totalFeatures[3]]=arrayCompleto[i]['Top Genre'];
+        for(let j = 0; j < myColumns.length; j++){
+            let name = features[j];
+            mySong[name] = myColumns[j][i];
+        }
+        newDataSource.push(mySong);
+
+    }
+
+    let newDataFrame3 = new dataForge.DataFrame({
+        values: newDataSource
+    });
+
+
+    subDataFrame = newDataFrame3.subset(features);
+
+    // DataSet come array di array
+    let data = subDataFrame.toRows();
+
+
+
+    // Calcolo autovettori e autovalori per PCA
+    var vectors = pca.getEigenVectors(data);
+
+    //Percentuale di accuratezza considerando il primo, i primi due e i primi tre autovettori
+    console.log("Percentuali: ");
+    let v = [];
+    let percentuale;
+
+    let numeroComponentiUsate=[];
+    let percentuali=[];
+    for(let i = 0; i < vectors.length; i++) {
+        v.push(vectors[i]);
+        numeroComponentiUsate.push(v.length);
+        percentuali.push(pca.computePercentageExplained(vectors, ...v));
+    }
+
+
+    var trace1 = {
+        x: numeroComponentiUsate,
+        y: percentuali,
+        type: 'scatter'
+    };
+
+    var dataGrafico=[trace1];
+    var layout = {
+        title: 'Variazione numero componenti in base alla varianza della PCA',
+        xaxis: {
+            title: 'Numero Componenti',
+        },
+        yaxis: {
+            title: 'Percentuale Varianza',
+        }
+    };
+
+    nodeplotlib.plot(dataGrafico,layout);
+}
+
+exports.graficoComonetiPrecisioneVarianza=graficoComonetiPrecisioneVarianza;
 exports.pcaProcess = pcaProcess;
 
