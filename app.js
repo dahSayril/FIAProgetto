@@ -33,7 +33,7 @@ const dbscan = require('./src/dbscan');
 // kmeans.graficoNumeroPuntiClusterByVarianza(numeroPunti,numeroCluster,percentualVarianza);
 
 
-const pathDataset = pca.pcaProcess('./datasource/SpotifyCSV.csv',0.80); // Array, primo elemento path standardizzato secondo elemento path pc
+const pathDataset = pca.pcaProcess('./datasource/SpotifyCSV.csv',0.70); // Array, primo elemento path standardizzato secondo elemento path pc
 const pathStandardizzato = pathDataset[0];
 const pathPC = pathDataset[1];
 

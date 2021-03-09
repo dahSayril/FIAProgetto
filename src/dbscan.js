@@ -23,7 +23,7 @@ function main(pathPC){
 
     deltas = [];
 
-    for (e = 0.43; e <= 0.8; e += 0.03){
+    for (e = 0.36; e <= 0.7; e += 0.03){
 
         console.log("E: " + e);
 
@@ -53,7 +53,6 @@ function main(pathPC){
     graficoRelazione(arrayEpsilon, arrayNumeroElementiPrimoCluster, arrayNumeroElementiNoise);
     graficoEpsilonNumeroCluster(arrayEpsilon, arrayNumeroCluster);
     grafico3D(makeCluster(myArray, optimalE, minPoints).clusters, myArray);
-    grafico3D(makeCluster(myArray, 0.55, minPoints).clusters, myArray);
 
 }
 
