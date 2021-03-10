@@ -80,20 +80,24 @@ function pcaProcess(datasetDiPartenza,percentualeOttima){
     var vectors = pca.getEigenVectors(data);
 
     //Percentuale di accuratezza considerando il primo, i primi due e i primi tre autovettori
-     console.log("Percentuali: ");
-     let v = [];
-     let percentuale;
-     for(let i = 0; i < vectors.length; i++) {
-         v.push(vectors[i]);
-         percentuale=pca.computePercentageExplained(vectors, ...v);
-         console.log(i+1 +" : "+percentuale);
-         if(percentuale>=percentualeOttima) {
-             break;
-         }
-     }
+    console.log("Percentuali: ");
+    let v = [];
+    let percentualiVarianza = [];
+    let percentuale;
+    let i;
+    for(i = 0; i < vectors.length; i++) {
+        v.push(vectors[i]);
+        percentuale=pca.computePercentageExplained(vectors, ...v);
+        percentualiVarianza.push(percentuale);
+        console.log(i+1 +" : "+percentuale);
+        if(percentuale>=percentualeOttima) {
+            break;
+        }
+    }
 
-     let adData = pca.computeAdjustedData(data, ...v).adjustedData; // N.B. Array di array
+    graficoComponentiVarianza(vectors);
 
+    let adData = pca.computeAdjustedData(data, ...v).adjustedData; // N.B. Array di array
 
 
     // Nuovo DataSource che conterra' il DataSet trasformato sulle PC individuate
@@ -124,6 +128,41 @@ function pcaProcess(datasetDiPartenza,percentualeOttima){
 
     return [standardizzatoEsportato, pcEsportato];
     
+}
+
+function graficoComponentiVarianza(vectors){
+
+    let v = [];
+    let percentualiVarianza = [];
+    let percentuale;
+    let i;
+    for(i = 0; i < vectors.length; i++) {
+        v.push(vectors[i]);
+        percentuale=pca.computePercentageExplained(vectors, ...v);
+        percentualiVarianza.push(percentuale);
+    }
+
+    let componenti = [...Array(++i).keys()].map(x=>x+1);
+
+    //Generazione del grafico
+    var trace1 = {
+        x: componenti,
+        y: percentualiVarianza,
+        type: 'scatter'
+    };
+    var data = [trace1];
+    var layout = {
+        title: 'Variazione numero componenti in base alla varianza della PCA',
+        xaxis: {
+            title: 'Numero Componenti',
+        },
+        yaxis: {
+            title: 'Percentuale Varianza',
+        }
+    };
+
+    nodeplotlib.plot(data,layout);
+
 }
 
 function getStandardDeviation(numbersArr, meanVal) {
