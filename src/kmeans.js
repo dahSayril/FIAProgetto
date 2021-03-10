@@ -196,7 +196,7 @@ function control_point(point,pointControl){
         if(point[cordinata]==pointControl[cordinata])
             riscontro=true;
         else
-            riscontro=false;
+            return false;
     }
     return riscontro;
 }
@@ -276,7 +276,7 @@ function fromPointsToSong(points,datasetCluster,datasetCompleto){
     return songs
 }
 //Funzione usata per generare un grafico radar dei cluster creati
-function graficoRadar(clusters, datasetCluster,datasetCompleto){
+function graficoRadar(clusters, datasetCluster,datasetCompleto,rangeMin=-2,rangeMax=6){
 
     var j=0;
     var data=[];
@@ -301,7 +301,7 @@ function graficoRadar(clusters, datasetCluster,datasetCompleto){
         polar: {
             radialaxis: {
                 visible: true,
-                range: [0, 1]
+                range: [rangeMin, rangeMax]
             }
         }
     }
@@ -357,7 +357,7 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
 //Funzione che genera un barchart per ogni cluster
 function makeBarChart(clusters, feature, datasetCluster, datasetCompleto){
     clusters.forEach((value, index, array)=>{
-        barChart(value.points, feature, datasetCluster, datasetCompleto, index + 1);
+        barChart(value.points, feature, datasetCluster, datasetCompleto, index );
     });
 }
 //Funziona che genera dei cluster su un dataset
