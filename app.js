@@ -2,13 +2,13 @@ const pca = require('./src/pca');
 const kmeans = require('./src/kmeans');
 const dbscan = require('./src/dbscan');
 
-//Grafico che mostra la sceta della varianza accettabile
-// let percentualVarianza=[0.40,0.50,0.60,0.70,0.80,0.90,1]
-// let elbowPoints=[];
-// let numeroPunti=[];
-// let numeroCluster=[];
-// let i=0;
-// pca.graficoComonetiPrecisioneVarianza('./datasource/datasetUtente.csv');
+// Grafico che mostra la sceta della varianza accettabile
+let percentualVarianza=[0.40,0.50,0.60,0.70,0.80,0.90,1]
+let elbowPoints=[];
+let numeroPunti=[];
+let numeroCluster=[];
+let i=0;
+pca.graficoComonetiPrecisioneVarianza('./datasource/datasetUtente.csv');
 
 // while (i<percentualVarianza.length){
 //     let pathDataset = pca.pcaProcess('./datasource/SpotifyCSV.csv',percentualVarianza[i]); // Array, primo elemento path standardizzato secondo elemento path pc
@@ -48,4 +48,4 @@ const pathPC = pathDataset[1];
 // kmeans.makeHistograms(clusters, "Beats Per Minute (BPM)", datasetAsArray, allSongsAsArray);
 
 /* DBScan */
-dbscan.dbscan(pathPC);
+// dbscan.dbscan(pathPC);

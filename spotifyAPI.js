@@ -94,7 +94,7 @@ sporifyAPI.get('/callback', function(req, res) {
     })
     .then(songOttenute => {
         if(songOttenute) {
-            const pathDataset = pca.pcaProcess('./datasource/datasetUtente.csv');
+            const pathDataset = pca.pcaProcess('./datasource/datasetUtente.csv', 0.70);
             const pathStandardizzato = pathDataset[0];
             const pathPC = pathDataset[1];
             const playlists = kmeans.mainKMeans(pathPC,pathStandardizzato)[1];

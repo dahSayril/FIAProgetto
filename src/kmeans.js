@@ -8,11 +8,11 @@ function main(pathPCA, pathStandardizzato) {
     // DataFrame con Componenti Principali
     let dataFrame = dataForge.readFileSync(pathPCA).parseCSV();
 
-        //1. Ottengo gli identificativi delle colonne generate dalla pca
-        let columnNames=dataFrame.getColumnNames();
-        for(i=0;i<columnNames.length;i++)
-            dataFrame=dataFrame.parseFloats(columnNames[i]);
-        let datasetPCA=dataFrame.toRows(); // DataFrame come array di array (ogni riga e' una canzone)
+    //1. Ottengo gli identificativi delle colonne generate dalla pca
+    let columnNames=dataFrame.getColumnNames();
+    for(i=0;i<columnNames.length;i++)
+        dataFrame=dataFrame.parseFloats(columnNames[i]);
+    let datasetPCA=dataFrame.toRows(); // DataFrame come array di array (ogni riga e' una canzone)
     
     // DataFrame dal DataSet completo ma dopo normalizzazione e standardizzazione
     dataFrame = dataForge.readFileSync(pathStandardizzato).parseCSV();
