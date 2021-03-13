@@ -314,13 +314,33 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
     var dataToBePlotted=[];
     var i=0;
 
+    let songs = [ ];
+
     //Per ogni cluster creato
-    while(i<clusters.length){
+    while(i<clusters.length) {
+
+        const _x = extractColum(clusters[i].points,0);
+        const _y = extractColum(clusters[i].points,1);
+        const _z = extractColum(clusters[i].points,2);
+
+        const _title = researchTitleCluster(clusters[i].points,datasetCluster,datasetCompleto);
+        const _genere = researchGenreCluster(clusters[i].points,datasetCluster,datasetCompleto);
+
+        for(let p = 0; p < _x.length; p++) {
+            const song = {
+                x: _x[p],
+                y: _y[p],
+                z: _z[p],
+                title: _title[p],
+                genere: _genere[p].trim()
+            }
+            songs.push(song);
+        }
 
         let trace = {
-            x: extractColum(clusters[i].points,0),
-            y:extractColum(clusters[i].points,1),
-            z:extractColum(clusters[i].points,2), //Do tutte le canzoni che compongono il cluster
+            x: _x,
+            y: _y,
+            z: _z, //Do tutte le canzoni che compongono il cluster
             mode: 'markers',
             name:"Trace " + i + ": " + categorizzazioneCluster(clusters[i].points,datasetCluster,datasetCompleto),
             marker: {
@@ -330,7 +350,7 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
                 },
                 opacity: 1,
             },
-            text: researchTitleCluster(clusters[i].points,datasetCluster,datasetCompleto), //Ottengo un array di titoli per le canzoni che compongono il cluster
+            text: _title, //Ottengo un array di titoli per le canzoni che compongono il cluster
             type: 'scatter3d'
         };
 
@@ -338,7 +358,63 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
         i=i+1;
 
     }
+/*
+    let traces = [["alternative"], ["jazz"], ["pop"], ["indie"], ["rock"], ["country"], ["dance"], ["hip hop"], ["metal"], ["blues"], ["folk"], ["soul"], ["carnaval"], ["punk"],
+        ["disco"], ["electro"], ["rap"], ["latin"], ["reggae"] ];
 
+    traces.forEach(value => { value.attribute = { x: [], y: [], z: [], title: [] } });
+
+    for(let p = 0; p < songs.length; p++) {
+
+        let index = - 1;
+
+        for(let q = 0; q < traces.length; q++) {
+           if(traces[q][0] === songs[p]["genere"]) 
+                index = q;
+        }
+
+        if(index === -1) {
+            traces.push([songs[p]["genere"]]);
+            index  = traces.length - 1;
+            traces[index].attribute = { x: [], y: [], z: [], title: [] }
+        }
+            
+
+        traces[index]["attribute"].x.push(songs[p].x);
+        traces[index]["attribute"].y.push(songs[p].y);
+        traces[index]["attribute"].z.push(songs[p].z);
+        traces[index]["attribute"].title.push(songs[p].title);
+
+    }
+
+    let dataToBePlotted2 = [];
+
+
+    for(let p = 0; p < traces.length; p++) {
+
+        const t = traces[p].attribute;
+
+        let trace = {
+            x: t.x,
+            y: t.y,
+            z: t.z, //Do tutte le canzoni che compongono il cluster
+            mode: 'markers',
+            name: traces[p][0],
+            marker: {
+                size: 5,
+                line: {
+                    width: 0.1
+                },
+                opacity: 1,
+            },
+            text: t.title, //Ottengo un array di titoli per le canzoni che compongono il cluster
+            type: 'scatter3d'
+        };
+
+        dataToBePlotted2.push(trace);
+
+    }
+*/
     var layout = {
         margin: {
             l: 0,
@@ -352,6 +428,7 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
     };
 
     nodeplotlib.plot(dataToBePlotted,layout);
+  //  nodeplotlib.plot(dataToBePlotted2, layout);
 
 }
 //Funzione che genera un barchart per ogni cluster
