@@ -1,8 +1,9 @@
 Index,Title,Artist,Top Genre,Beats Per Minute (BPM),Energy,Danceability,Loudness (dB),Liveness,Valence,Length (Duration),Acousticness,Speechiness
+spotify:track:6Fi3jPjA3R0fTzDRdVt7mD,Squad,SLF,,140.037,0.753,0.766,-5.965,0.105,0.757,188571,0.0228,0.3
 spotify:track:7Km700CiY1sN2PPz3BTiuV,Gipsy Woman (She's Homeless),Glass Water,,120.889,0.697,0.652,-10.139,0.456,0.468,140255,0.00321,0.0623
 spotify:track:4aMT5LHe8A2uIc11H8Cx2m,Conga,Gloria Estefan,dance pop,122.219,0.805,0.791,-10.202,0.0563,0.882,255107,0.16,0.0464
 spotify:track:5UKMdUAChYAllKDye6qDGb,Minuetto,Mia Martini,classic italian pop,191.107,0.483,0.248,-11.279,0.631,0.439,283893,0.728,0.0678
-spotify:track:2TVxnKdb3tqe1nhQWwwZCO,Tiny Dancer,Elton John,classic rock,145.075,0.428,0.414,-11.097,0.148,0.282,377093,0.382,0.0278
+spotify:track:2TVxnKdb3tqe1nhQWwwZCO,Tiny Dancer,Elton John,glam rock,145.075,0.428,0.414,-11.097,0.148,0.282,377093,0.382,0.0278
 spotify:track:0s8QrhtXW1Av2tuLLerDjN,Onna Come Up,Lil Eazzyy,chicago rap,150.052,0.571,0.793,-9.247,0.101,0.616,128078,0.382,0.249
 spotify:track:19DVUBuc7rkVXkMAPaWpDi,E po' che fà - 2017 Remaster,Pino Daniele,canzone d'autore,137.275,0.5,0.615,-7.751,0.113,0.584,242987,0.735,0.0363
 spotify:track:2bN3CnNZTUlln97VsQcJ0c,Basta 'Na Jurnata E Sole - Remastered 2008,Pino Daniele,canzone d'autore,130.02,0.824,0.648,-3.376,0.161,0.768,214453,0.695,0.0416
@@ -13,7 +14,7 @@ spotify:track:66TRwr5uJwPt15mfFkzhbi,Crank That (Soulja Boy),Soulja Boy,atl hip 
 spotify:track:3poh4OWmbULDrXRjiwFZUK,BUGIE,Massimo Pericolo,italian hip hop,89.826,0.568,0.511,-8.89,0.0958,0.162,229343,0.348,0.141
 spotify:track:1Ht2ikmrxrs7EZj3VFkrCe,PALAZZINE (feat. Marracash & Coez),KID VICIOUS,italian hip hop,119.991,0.781,0.757,-6.309,0.338,0.457,187625,0.0691,0.262
 spotify:track:0f0k0OJ9VbaLHX4J1t2qUy,Just My Imagination,The Cranberries,irish rock,100.464,0.797,0.545,-5.315,0.0884,0.852,221293,0.257,0.0252
-spotify:track:6U5TPU2eZMqD6vQ0dd9Wyi,Belva,Gazzelle,italian pop,160.039,0.7,0.664,-6.822,0.123,0.475,175914,0.116,0.0996
+spotify:track:6U5TPU2eZMqD6vQ0dd9Wyi,Belva,Gazzelle,italian indie pop,160.039,0.7,0.664,-6.822,0.123,0.475,175914,0.116,0.0996
 spotify:track:0Z3xhSOhrawLV81YdiDiiJ,Venus,Shocking Blue,classic rock,128.111,0.762,0.691,-6.47,0.0804,0.957,187533,0.462,0.0367
 spotify:track:1x9iOd3K1JC6tdjGZJpFgZ,You Can Leave Your Hat On,Joe Cocker,album rock,173.8,0.535,0.65,-13.325,0.187,0.9,255293,0.118,0.0282
 spotify:track:6D5UZLg2BliigeAmTgpESj,SOGNI LUCIDI ⊰⊱ (con CARL BRAVE & ROSA CHEMICAL),MACE,funk carioca,109.027,0.705,0.727,-6.235,0.155,0.672,186979,0.0313,0.047
@@ -53,8 +54,8 @@ spotify:track:3vZO25GdYuqFrR1kzZADnp,Ready or Not,Fugees,east coast hip hop,130.
 spotify:track:3u5N55tHf7hXATSQrjBh2q,Freed From Desire,Gala,eurodance,128.99,0.861,0.704,-4.221,0.0992,0.636,213394,0.587,0.0493
 spotify:track:2xoVgHZKhYCmCNxqidJ4en,Balla,Umberto Rosario Balsamo,,132.952,0.865,0.554,-9.017,0.091,0.65,195333,0.41,0.0812
 spotify:track:7bWlJLQ8yLdpcxn1xoEpET,Incidente al Vomero,Federico Salvatore,,75.267,0.235,0.657,-23.895,0.0795,0.614,215693,0.0794,0.404
-spotify:track:7HsCbVk1DlfgBqxk7yX8ym,Il Ballo Del Mattone,Rita Pavone,classic italian pop,91.67,0.631,0.521,-6.131,0.588,0.925,136348,0.448,0.0482
-spotify:track:2d0NQOeVinAfvRqu88H6nQ,Come Te Non C'E' Nessuno,Rita Pavone,classic italian pop,58.131,0.528,0.429,-5.541,0.329,0.63,161100,0.692,0.0271
+spotify:track:7HsCbVk1DlfgBqxk7yX8ym,Il Ballo Del Mattone,Rita Pavone,classic italian pop,91.673,0.631,0.521,-6.131,0.551,0.925,137573,0.448,0.0482
+spotify:track:2d0NQOeVinAfvRqu88H6nQ,Come Te Non C'E' Nessuno,Rita Pavone,classic italian pop,58.131,0.528,0.284,-5.541,0.317,0.611,162747,0.692,0.033
 spotify:track:0UvCh63URrLFcPkKt99hHd,Don't Look Back in Anger - Remastered,Oasis,beatlesque,162.937,0.938,0.327,-3.237,0.148,0.326,289560,0.0708,0.0645
 spotify:track:1OkqhhiH4TEYtqxiSISYen,Bongo Bong,Manu Chao,latin alternative,149.874,0.546,0.754,-10.031,0.129,0.966,158427,0.945,0.063
 spotify:track:1vxw6aYJls2oq3gW0DujAo,Crazy,Gnarls Barkley,atl hip hop,111.97,0.587,0.855,-4.589,0.105,0.64,177466,0.0505,0.0336
@@ -114,8 +115,8 @@ spotify:track:0G3fbPbE1vGeABDEZF0jeG,Good Times,CHIC,disco,110.596,0.657,0.87,-7
 spotify:track:2iXcvnD3d1gfLBum0cE5Eg,Tutti Frutti,Little Richard,adult standards,184.835,0.658,0.555,-3.866,0.118,0.937,144227,0.793,0.0541
 spotify:track:3nS9a01VvXHQriLqJYwRqG,DOLLAZ ON MY HEAD (feat. Young Thug),Gunna,atl hip hop,145.115,0.458,0.825,-7.47,0.102,0.161,197760,0.114,0.0577
 spotify:track:58VSTSKVhvUn00opHyej0m,Mamacita (feat. Lele Blade),Geolier,italian hip hop,106.997,0.589,0.703,-7.276,0.106,0.492,212173,0.123,0.107
-spotify:track:747fyAuUDG3feXRd6pILnx,Your Song,Elton John,classic rock,128.216,0.331,0.554,-10.866,0.107,0.295,240800,0.781,0.0299
-spotify:track:3gdewACMIVMEWVbyb8O9sY,"Rocket Man (I Think It's Going To Be A Long, Long Time)",Elton John,classic rock,136.571,0.532,0.601,-9.119,0.0925,0.341,281613,0.432,0.0286
+spotify:track:747fyAuUDG3feXRd6pILnx,Your Song,Elton John,glam rock,128.216,0.331,0.554,-10.866,0.107,0.295,240800,0.781,0.0299
+spotify:track:3gdewACMIVMEWVbyb8O9sY,"Rocket Man (I Think It's Going To Be A Long, Long Time)",Elton John,glam rock,136.571,0.532,0.601,-9.119,0.0925,0.341,281613,0.432,0.0286
 spotify:track:0r9IwgbiJL93RfZ2k3wcGb,C'era una Vodka,Willie Peyote,italian hip hop,84.097,0.751,0.573,-7.065,0.0698,0.488,286819,0.247,0.216
 spotify:track:6ZCZjeYT8M0T6zFL9UdW6d,XDVRMX,Sfera Ebbasta,italian hip hop,115.02,0.878,0.78,-3.615,0.146,0.399,202445,0.146,0.0541
 spotify:track:2MbdDtCv5LUVjYy9RuGTgC,"WHATS POPPIN (feat. DaBaby, Tory Lanez & Lil Wayne) - Remix",Jack Harlow,deep underground hip hop,145.013,0.723,0.904,-5.224,0.185,0.835,227478,0.0631,0.26
@@ -175,10 +176,10 @@ spotify:track:1EGC4KMFYi5ukbe68OcM4Y,"1,2,3 STELLA (feat. Geolier)",Dark Polo Ga
 spotify:track:0iE5rYiRz80mGgPA27SSRa,TAKEO ISCHI (feat. Massimo Pericolo),Speranza,italian hip hop,139.948,0.754,0.671,-5.449,0.176,0.449,204513,0.17,0.197
 spotify:track:38bWlCEIeqJDzZh4OrgR8z,Mexico,Geolier,italian hip hop,114.95,0.815,0.53,-4.161,0.106,0.777,192773,0.205,0.108
 spotify:track:7lMOD5WEhQTeAibSHUZvR0,Alghero,Giuni Russo,classic italian pop,132.068,0.688,0.732,-6.267,0.143,0.849,252630,0.122,0.0319
-spotify:track:0gVcauBja2DHwCzrqAVXg1,Sigarette,Neffa,italian adult pop,82.991,0.57,0.649,-4.233,0.162,0.915,184147,0.303,0.0273
+spotify:track:0gVcauBja2DHwCzrqAVXg1,Sigarette,Neffa,classic italian pop,82.991,0.57,0.649,-4.233,0.162,0.915,184147,0.303,0.0273
 spotify:track:5YPXVzvnHSsVQptzOzL1E7,'O tiempo se ne va,Squallor,classic italian pop,109.524,0.502,0.66,-10.925,0.208,0.712,225267,0.427,0.101
 spotify:track:2CWfkhYbrrwGhuT4ABAjPO,Pop porno,Il Genio,italian alternative,144.983,0.564,0.626,-6.832,0.113,0.523,197213,0.624,0.0337
-spotify:track:00b7i3sXa6hlR2ZIDwyNLN,Prima di andare via,Neffa,italian adult pop,111.002,0.682,0.834,-4.286,0.107,0.944,231093,0.0518,0.0313
+spotify:track:00b7i3sXa6hlR2ZIDwyNLN,Prima di andare via,Neffa,classic italian pop,111.002,0.682,0.834,-4.286,0.107,0.944,231093,0.0518,0.0313
 spotify:track:7c76SiAfT7JkMiCm8BBCcP,"Hello, Goodbye - Remastered",The Beatles,beatlesque,99.307,0.733,0.479,-8.753,0.414,0.806,208840,0.306,0.0256
 spotify:track:1gFNm7cXfG1vSMcxPpSxec,"Ob-La-Di, Ob-La-Da - Remastered 2009",The Beatles,beatlesque,113.059,0.728,0.818,-8.331,0.251,0.975,188960,0.232,0.0314
 spotify:track:4s6LhHAV5SEsOV0lC2tjvJ,California Dreamin' - Single Version,The Mamas & The Papas,brill building pop,112.367,0.608,0.552,-9.786,0.0533,0.637,162373,0.352,0.0345
@@ -201,7 +202,7 @@ spotify:track:2gNjmvuQiEd2z9SqyYi8HH,Summertime,Louis Armstrong,adult standards,
 spotify:track:7rpqZYe0lJ4kxuN0eIgMrO,Balaclava,Highsnob,italian hip hop,77.029,0.629,0.784,-5.834,0.0623,0.444,165267,0.00345,0.156
 spotify:track:1lbXEepatjRVjoG8pZMtdp,Dreams,Fleetwood Mac,album rock,120.473,0.338,0.823,-15.899,0.5,0.785,254453,0.139,0.0413
 spotify:track:0ZBtXonwjdAbRo2UrD0Efq,P.D.A. (We Just Don't Care),John Legend,neo soul,111.496,0.729,0.796,-6.94,0.302,0.578,278760,0.082,0.0488
-spotify:track:5tQKprSOVVvADqldAJVYzI,Runaway - Remastered,Jamiroquai,dance pop,125.996,0.918,0.705,-3.597,0.327,0.826,225320,0.0572,0.0501
+spotify:track:5tQKprSOVVvADqldAJVYzI,Runaway - Remastered,Jamiroquai,dance pop,125.996,0.918,0.705,-3.597,0.329,0.826,225320,0.0571,0.0501
 spotify:track:4N0TP4Rmj6QQezWV88ARNJ,Superstition,Stevie Wonder,adult standards,100.625,0.578,0.611,-14.171,0.0983,0.884,266133,0.0598,0.0676
 spotify:track:5IOYHf80xWVdxYTPxkxYZP,Avvoltoi (feat. Fabri Fibra) - prod. CRVEL & STABBER,Nitro,italian hip hop,105.003,0.659,0.796,-8.373,0.316,0.187,189757,0.105,0.11
 spotify:track:5e7ldn9Kwo8Aw9Z8ql9cDj,All Eyez On Me (ft. Big Syke),2Pac,g funk,93.281,0.719,0.873,-5.948,0.333,0.858,307773,0.03,0.248
@@ -209,17 +210,17 @@ spotify:track:70evTHsBFgs1AKhC5URcCz,In This World,Moby,downtempo,104.957,0.703,
 spotify:track:4v6jydWBTAIqnyPVNyOAdc,What Is Love,Haddaway,bubblegum dance,123.871,0.805,0.69,-5.979,0.281,0.738,269373,0.0196,0.0329
 spotify:track:3rOw9WmYFCRLHTRcbOjhUl,L'ultima volta - feat. Massimo Pericolo,Emis Killa,italian hip hop,89.758,0.801,0.569,-4.318,0.105,0.24,210960,0.287,0.259
 spotify:track:6r8k1vznHrzlEKYxL4dZEe,La Isla Bonita,Madonna,dance pop,99.978,0.612,0.725,-10.706,0.0548,0.965,242320,0.302,0.0372
-spotify:track:0lzpfrTARexLFXEACKSXTh,I'm Still Standing,Elton John,classic rock,177.354,0.927,0.489,-6.298,0.305,0.79,181787,0.455,0.17
+spotify:track:0lzpfrTARexLFXEACKSXTh,I'm Still Standing,Elton John,glam rock,177.354,0.927,0.489,-6.298,0.305,0.79,181787,0.455,0.17
 spotify:track:5KG2ahk1cONbHvg3dBdTbx,Mr. Lonely,Bobby Vinton,adult standards,168.984,0.293,0.245,-10.361,0.177,0.344,161373,0.817,0.0303
 spotify:track:5b7OgznPJJr1vHNYGyvxau,Fly Me To The Moon (In Other Words),Frank Sinatra,adult standards,119.416,0.26,0.668,-14.256,0.0621,0.368,147000,0.453,0.0523
 spotify:track:0NI42v4l2AxIbgoIrWKiBU,Just A Gigolo / I Ain't Got Nobody - Medley / Remastered,Louis Prima,adult standards,124.878,0.638,0.519,-5.226,0.0561,0.67,284893,0.683,0.0942
 spotify:track:1uoOJcYdtlWPrA6UsUHEah,Kobra,Donatella Rettore,classic italian pop,117.377,0.517,0.822,-11.347,0.155,0.763,207160,0.713,0.0956
 spotify:track:33jt3kYWjQzqn3xyYQ5ZEh,Cheek To Cheek,Ella Fitzgerald,adult standards,122.482,0.264,0.663,-14.571,0.1,0.657,354533,0.706,0.0914
 spotify:track:5CQ30WqJwcep0pYcV4AMNc,Stairway to Heaven - Remaster,Led Zeppelin,album rock,82.433,0.34,0.338,-12.049,0.116,0.197,482830,0.58,0.0339
-spotify:track:0e3yhVeNaTfKIWQRw9U9sY,Sacrifice,Elton John,classic rock,112.751,0.422,0.756,-12.967,0.0368,0.487,304133,0.0165,0.0292
+spotify:track:0e3yhVeNaTfKIWQRw9U9sY,Sacrifice,Elton John,glam rock,112.751,0.422,0.756,-12.967,0.0368,0.487,304133,0.0165,0.0292
 spotify:track:78MI7mu1LV1k4IA2HzKmHe,Dream A Little Dream Of Me - Single Version,Ella Fitzgerald,adult standards,76.497,0.104,0.443,-17.042,0.191,0.394,185160,0.913,0.101
 spotify:track:3EYOJ48Et32uATr9ZmLnAo,Roxanne,The Police,album rock,134.114,0.748,0.618,-8.905,0.0473,0.663,191947,0.0384,0.358
-spotify:track:2zYzyRzz6pRmhPzyfMEC8s,Highway to Hell,AC/DC,album rock,115.728,0.913,0.574,-4.793,0.156,0.423,208400,0.061,0.133
+spotify:track:2zYzyRzz6pRmhPzyfMEC8s,Highway to Hell,AC/DC,australian rock,115.728,0.913,0.574,-4.793,0.156,0.423,208400,0.061,0.133
 spotify:track:5V1AHQugSTASVez5ffJtFo,Let It Be - Remastered,The Beatles,beatlesque,143.462,0.403,0.443,-8.339,0.111,0.41,243027,0.631,0.0322
 spotify:track:3m7V717IKZqZLW5qUIOxdD,Hey Jude - Remastered 2009,The Beatles,beatlesque,145.164,0.552,0.402,-10.158,0.0929,0.668,431333,0.028,0.0258
 spotify:track:503OTo2dSqe7qk76rgsbep,Still D.R.E.,Dr. Dre,g funk,93.431,0.775,0.816,-3.323,0.0543,0.527,270587,0.16,0.234
@@ -258,7 +259,7 @@ spotify:track:1XZa6MDzWqCTeNATvtxzZY,Hey Ya!,Outkast,atl hip hop,79.456,0.916,0.
 spotify:track:72BnKkKnrOeCDY9vy2avFk,Ti Sento,Matia Bazar,classic italian pop,119.707,0.621,0.608,-11.547,0.0552,0.53,255000,0.143,0.0276
 spotify:track:7FX4EvQht57zUc2P313cEZ,"Fuego Del Calor (feat. Ozuna, Tyga & Capo Plaza)",Scott Storch,,99.977,0.652,0.814,-8.665,0.0604,0.541,196000,0.071,0.107
 spotify:track:27GmP9AWRs744SzKcpJsTZ,Jumpman,Drake,canadian hip hop,142.079,0.553,0.852,-7.286,0.332,0.656,205879,0.0559,0.187
-spotify:track:2Pn5gvVioma5LHPxgEBBmD,"No More ""I Love You's""",Annie Lennox,europop,179.907,0.57,0.372,-7.305,0.141,0.234,291333,0.517,0.0305
+spotify:track:2Pn5gvVioma5LHPxgEBBmD,"No More ""I Love You's""",Annie Lennox,folk,179.907,0.57,0.372,-7.305,0.141,0.234,291333,0.517,0.0305
 spotify:track:2HJ9dAijqN760XKFYFttoP,Buonasera dottore - 2001 Remastered Version,Mina,classic italian pop,96.14,0.256,0.308,-17.317,0.0589,0.292,274507,0.572,0.0316
 spotify:track:2qhANdv6px9BbGGwMYvkC0,Hakuna Matata,Edoardo Leo,,167.344,0.594,0.578,-10.019,0.153,0.7,251520,0.367,0.191
 spotify:track:3E7ZwUMJFqpsDOJzEkBrQ7,Can't Get You out of My Head,Kylie Minogue,australian dance,126.007,0.563,0.766,-7.516,0.115,0.964,230640,0.0263,0.0339
@@ -369,7 +370,7 @@ spotify:track:0kbkwRZGlwR5wghgW38qXo,20 Collane (feat. Rich The Kid),Sfera Ebbas
 spotify:track:2293PmNvzPuLp9N2iF0pfF,Balenciaga,Sfera Ebbasta,italian hip hop,128.982,0.755,0.722,-4.781,0.086,0.509,169280,0.192,0.0961
 spotify:track:2igwFfvr1OAGX9SKDCPBwO,Empire State Of Mind,JAY-Z,east coast hip hop,173.585,0.956,0.491,-1.538,0.46,0.811,276920,0.0295,0.392
 spotify:track:1UqhkbzB1kuFwt2iy4h29Q,Cough Syrup,Young the Giant,indie pop,128.978,0.721,0.534,-7.307,0.115,0.225,249520,0.0343,0.0417
-spotify:track:39shmbIHICJ2Wxnk1fPSdz,Should I Stay or Should I Go - Remastered,The Clash,classic rock,113.375,0.833,0.742,-6.463,0.384,0.816,188987,0.079,0.115
+spotify:track:39shmbIHICJ2Wxnk1fPSdz,Should I Stay or Should I Go - Remastered,The Clash,classic rock,113.375,0.836,0.743,-6.465,0.384,0.82,188987,0.0804,0.116
 spotify:track:3O7lxdQoe1aNWs93VSHsJg,On GOD (with YG & Tyga feat. A$AP Ferg & A$AP Rocky),Mustard,cali rap,103.998,0.676,0.857,-5.359,0.0592,0.339,263127,0.218,0.192
 spotify:track:2umL0eO9N7iNxDay6i2rVi,STAR WARS - prod. Young Miles - Crookers x Nic Sarno,MACHETE,italian hip hop,129.961,0.767,0.789,-4.54,0.0854,0.58,208622,0.146,0.119
 spotify:track:2blMyjvcy9l17CWRupWpyF,Bataclan,Nerone,italian hip hop,99.975,0.859,0.814,-5.305,0.0543,0.509,185280,0.469,0.322
@@ -418,7 +419,7 @@ spotify:track:0nbXyq5TXYPCO7pr3N8S4I,The Box,Roddy Ricch,melodic rap,116.971,0.5
 spotify:track:0ZzXPo0gS5h718w7WErG44,Polvere (feat. Capo Plaza),Tedua,indie liguria,181.945,0.483,0.482,-8.993,0.104,0.139,252992,0.118,0.283
 spotify:track:1HzOwDZ4rZjsPd7laOPA0a,OGNT,Sfera Ebbasta,italian hip hop,110.079,0.859,0.748,-5.416,0.162,0.53,113455,0.0835,0.124
 spotify:track:5FOiYid2K97rMMekxkrWOG,Come Stai,Vasco Rossi,classic italian pop,110.018,0.82,0.638,-3.853,0.076,0.488,259827,0.0187,0.0285
-spotify:track:7eJMfftS33KTjuF7lTsMCx,death bed (coffee for your head),Powfu,sad rap,144.026,0.431,0.726,-8.765,0.696,0.348,173333,0.731,0.135
+spotify:track:7eJMfftS33KTjuF7lTsMCx,death bed (coffee for your head),Powfu,emo rap,144.026,0.431,0.726,-8.765,0.696,0.348,173333,0.731,0.135
 spotify:track:0JjM9bKm4wrwohMslcm892,Still Be Friends (feat. Tory Lanez & Tyga),G-Eazy,hip hop,104,0.759,0.803,-4.692,0.0921,0.284,213308,0.00509,0.0494
 spotify:track:7hGMh0mpoxgju622XPhgEc,WANNABE VOL. 3,Highsnob,italian hip hop,122.987,0.732,0.914,-5.432,0.0894,0.495,203902,0.093,0.243
 spotify:track:1000nHvUdawXuUHgBod4Wv,Panini,Lil Nas X,country rap,153.848,0.594,0.703,-6.146,0.123,0.475,114893,0.342,0.0752
@@ -442,7 +443,7 @@ spotify:track:2aEeghgUcnu75tzcolFMfs,La Bamba - Single Version,Ritchie Valens,ad
 spotify:track:1INWPr855fwWdAOeecbu0W,Let's Twist Again,Chubby Checker,adult standards,167.832,0.709,0.604,-6.377,0.0551,0.907,137360,0.0987,0.158
 spotify:track:2Srwzgs6tbJDB4Sm8lUDI0,Big Boys,Chuck Berry,adult standards,161.873,0.962,0.557,-4.268,0.12,0.699,185845,0.0488,0.142
 spotify:track:6FT83pFXKhDlXDsNJFAHWz,You Never Can Tell,Chuck Berry,adult standards,157.404,0.852,0.525,-9.519,0.218,0.884,161907,0.731,0.222
-spotify:track:6hEdVxKgbYTcDiYwRqMKbm,Brivido Felino,MINACELENTANO,,93.995,0.496,0.802,-10.941,0.0909,0.794,224440,0.37,0.0354
+spotify:track:6hEdVxKgbYTcDiYwRqMKbm,Brivido Felino,MINACELENTANO,italian adult pop,93.995,0.496,0.802,-10.941,0.0909,0.794,224440,0.37,0.0354
 spotify:track:4M7Q5Havozf2MoieasecTs,Inthrough The Night - Dance Version,Konty,,108.25,0.525,0.801,-8.947,0.0632,0.656,344547,0.0502,0.0465
 spotify:track:5yY9lUy8nbvjM1Uyo1Uqoc,Life Is Good (feat. Drake),Future,atl hip hop,142.037,0.609,0.676,-5.831,0.152,0.508,237735,0.0706,0.481
 spotify:track:5pjl42Dy5v88ZLbuV34xpQ,LOCO (feat. Dark Polo Gang),Kidd Keo,trap latino,91.951,0.457,0.767,-4.939,0.153,0.21,211569,0.271,0.172
@@ -514,7 +515,7 @@ spotify:track:0wQs7dhVYMSbu1TtZwhjoj,Bugie Diverse,CoCo,italian hip hop,94.021,0
 spotify:track:4zoJh95UXZrg1LAFITrVC1,Carillon (feat. Luchè),CoCo,italian hip hop,158.086,0.891,0.671,-5.337,0.118,0.712,158728,0.216,0.0406
 spotify:track:2O2wjjBU0BB0OOA3dCOOfr,Parliamo,Luche,italian hip hop,140.073,0.604,0.743,-6.589,0.0871,0.525,196714,0.109,0.0376
 spotify:track:2jZgzSxNSg1hTCq0ewWHGJ,Junk Of The Heart (Happy),The Kooks,brighton indie,145.017,0.894,0.604,-5,0.0299,0.901,187253,0.0212,0.037
-spotify:track:2xiOdusRnZezQok1RgLNeS,"You Should Be Dancing - Edit / From ""Saturday Night Fever"" Soundtrack",Bee Gees,adult standards,123.009,0.716,0.681,-10.911,0.337,0.963,256493,0.0182,0.0333
+spotify:track:2xiOdusRnZezQok1RgLNeS,"You Should Be Dancing - Edit / From ""Saturday Night Fever"" Soundtrack",Bee Gees,disco,123.009,0.716,0.681,-10.911,0.337,0.963,256493,0.0182,0.0333
 spotify:track:58TaFP5j5i9swOf584yon2,HOUSTONFORNICATION,Travis Scott,rap,160.042,0.723,0.689,-4.052,0.158,0.288,217828,0.0985,0.0836
 spotify:track:5PEZJMU4xfiSNwT26JhHnL,Get Up,Chinese Man,electro swing,99.049,0.687,0.766,-6.576,0.213,0.514,240773,0.251,0.174
 spotify:track:4JJtZMgxQgTlBBg7E9Qeac,Bimbi,Charlie Charles,italian hip hop,133.977,0.753,0.768,-4.482,0.11,0.633,240245,0.0305,0.185
@@ -534,7 +535,7 @@ spotify:track:7ycWLEP1GsNjVvcjawXz3z,Praise The Lord (Da Shine) (feat. Skepta),A
 spotify:track:2cYqizR4lgvp4Qu6IQ3qGN,BUTTERFLY EFFECT,Travis Scott,rap,140.958,0.628,0.763,-5.85,0.114,0.193,190557,0.0531,0.05
 spotify:track:3LuuuNvULPU1GOfSg0HG62,Cocaina,Emis Killa,italian hip hop,139.949,0.743,0.735,-4.551,0.311,0.358,208526,0.0175,0.131
 spotify:track:3RsSxNSorUqe9K4qEGTlGC,Allenamento #2,Capo Plaza,italian hip hop,80.019,0.601,0.86,-7.247,0.103,0.0589,151422,0.406,0.509
-spotify:track:1FHNctV68GUNLgXclG2DtR,Dancing in the Moonlight,Toploader,british alternative rock,119.485,0.845,0.639,-3.333,0.336,0.871,233373,0.0528,0.0372
+spotify:track:1FHNctV68GUNLgXclG2DtR,Dancing in the Moonlight,Toploader,british alternative rock,119.48,0.845,0.639,-3.333,0.336,0.871,233373,0.0528,0.0372
 spotify:track:6hmtNel4OKlBpBcTO7ao3o,Natural Blues,Moby,downtempo,107.992,0.65,0.679,-7.902,0.269,0.674,253773,0.0487,0.0331
 spotify:track:1hEh8Hc9lBAFWUghHBsCel,Porcelain,Moby,downtempo,94.925,0.613,0.515,-8.423,0.449,0.357,238920,0.00147,0.0305
 spotify:track:2NPxL1QqPrD1a7OLHjVcAP,I Can,Nas,conscious hip hop,95.313,0.885,0.837,-3.914,0.0666,0.694,253720,0.103,0.182
@@ -593,7 +594,6 @@ spotify:track:2rgOAX5Cj3pk8JFnaPwJbd,STAI ZITTO (feat. Fabri Fibra),Salmo,italia
 spotify:track:2sCkQ5AoGNKy0urYd2E3BT,RICCHI E MORTI,Salmo,italian hip hop,125.009,0.901,0.863,-5.244,0.526,0.584,138240,0.152,0.303
 spotify:track:4Nc1FDBI1NUiN48MjTiXEi,HO PAURA DI USCIRE,Salmo,italian hip hop,120.079,0.883,0.631,-4.356,0.0872,0.585,197747,0.064,0.388
 spotify:track:4spkZ6gRKh827yp6JI6TN1,SPARARE ALLA LUNA (feat. Coez),Salmo,italian hip hop,85.041,0.681,0.732,-7.665,0.111,0.151,211667,0.381,0.259
-spotify:track:6Jv6R1QvVm2CuCbqLi1nAT,PXM,Salmo,italian hip hop,160.044,0.659,0.676,-9.091,0.206,0.536,184507,0.123,0.108
 spotify:track:2fkVZYFv9hOejIsLzZy8ad,IL CIELO NELLA STANZA (feat. NSTASIA),Salmo,italian hip hop,134.998,0.501,0.755,-9.551,0.146,0.267,186213,0.0867,0.189
 spotify:track:3kFQ2djY3O2uH8o0WsqdhO,TIE',Salmo,italian hip hop,94.998,0.802,0.681,-7.422,0.137,0.44,90933,0.0414,0.0704
 spotify:track:3ibnXjXTxiQQVJsoCffeo3,ORA CHE FAI?,Salmo,italian hip hop,157.977,0.732,0.707,-7.646,0.214,0.663,130507,0.0274,0.132
@@ -601,6 +601,7 @@ spotify:track:4Yr7z1MFiI2D3QnldF107i,PERDONAMI,Salmo,italian hip hop,76.592,0.74
 spotify:track:1VNARx6Sm6ZYAsDMCGiU1B,LUNEDI',Salmo,italian hip hop,124.382,0.762,0.571,-8.225,0.114,0.467,205267,0.425,0.46
 spotify:track:77F0NNChJGfDBp3fTCWaDc,DISPOVERY CHANNEL (feat. Nitro),Salmo,italian hip hop,140.061,0.816,0.852,-7.276,0.245,0.531,204400,0.127,0.23
 spotify:track:7wC76LWyNxaP3hjGzbWOcN,CABRIOLET (feat. Sfera Ebbasta),Salmo,italian hip hop,150.058,0.531,0.548,-7.436,0.0919,0.309,185573,0.15,0.264
+spotify:track:6Jv6R1QvVm2CuCbqLi1nAT,PXM,Salmo,italian hip hop,160.044,0.659,0.676,-9.091,0.206,0.536,184507,0.123,0.108
 spotify:track:2oBXn8htpoyjRqrkIGGm0a,Fuori Dal Tunnel,Caparezza,italian adult pop,92.005,0.717,0.853,-4.853,0.104,0.665,310267,0.189,0.128
 spotify:track:65f8Ca4HbZCMLhpZPTHW4O,What It Is,Mark Knopfler,classic rock,122.084,0.682,0.624,-7.274,0.288,0.432,295893,0.615,0.0302
 spotify:track:4joTYdkidA24uNLSRn2g0o,Trapper Man,Mark Knopfler,classic rock,99.441,0.533,0.677,-13.815,0.0971,0.696,360893,0.596,0.0289
@@ -705,7 +706,7 @@ spotify:track:7LHjQeXz7v7nWQPrcbLrmK,Rose rosse,Massimo Ranieri,canzone napoleta
 spotify:track:7Djndakc0nj5PcKpF8Z67p,Se bruciasse la città,Massimo Ranieri,canzone napoletana,111.797,0.843,0.461,-7.999,0.147,0.581,192560,0.32,0.123
 spotify:track:5QKRTdqD7dgOIWMYXUmD6J,Perdere l'amore,Massimo Ranieri,canzone napoletana,134.955,0.533,0.394,-9.648,0.19,0.422,251533,0.474,0.0393
 spotify:track:31n0IigR561jYALhTmwN2z,Infamity Show,Nitro,italian hip hop,116.92,0.72,0.832,-4.651,0.376,0.59,208867,0.0628,0.101
-spotify:track:1lokrc820IaY9ydHPJNmNJ,Bitch - Radio Edit,Nils Van Zandt,slap house,124.967,0.936,0.797,-3.595,0.185,0.817,156043,0.0965,0.0441
+spotify:track:1lokrc820IaY9ydHPJNmNJ,Bitch - Radio Edit,Nils Van Zandt,francoton,124.967,0.936,0.797,-3.595,0.185,0.817,156043,0.0965,0.0441
 spotify:track:5iwvoI2MM2tOrdUhNjcsqf,No Roots,Alice Merton,,115.958,0.657,0.863,-7.295,0.0713,0.829,235813,0.264,0.105
 spotify:track:2U7Hu2RaNQNRi7izoJyZaX,rockstar,Post Malone,dfw rap,159.784,0.532,0.578,-6.636,0.143,0.12,218320,0.117,0.066
 spotify:track:0kHTkvGavvk2MjBTSUtOZx,Ricchi x Sempre,Sfera Ebbasta,italian hip hop,211.842,0.734,0.599,-7.568,0.187,0.133,223787,0.196,0.413
@@ -848,7 +849,7 @@ spotify:track:0C9rBeWAsPhmBeaYKZLN5m,Figli Delle Stelle,Alan Sorrenti,classic it
 spotify:track:7037bX3jdaUWUAXL12CHGy,Sarà perché ti amo,Ricchi E Poveri,classic italian pop,120.196,0.751,0.837,-8.245,0.0582,0.964,190693,0.119,0.0377
 spotify:track:7GTeLC0Luk2RgtFE6CpYSo,Triangolo,Renato Zero,classic italian pop,137.751,0.673,0.621,-9.995,0.127,0.674,277173,0.071,0.0447
 spotify:track:2RzJwBCXsS1VnjDm2jKKAa,I Believe I Can Fly,R. Kelly,,120.179,0.444,0.55,-7.588,0.187,0.0438,320667,0.241,0.0292
-spotify:track:6pyzBTIjcO2AMkKE6x2Otb,"Stayin' Alive - From ""Saturday Night Fever"" Soundtrack",Bee Gees,adult standards,103.564,0.826,0.703,-7.179,0.179,0.945,285373,0.0322,0.0341
+spotify:track:6pyzBTIjcO2AMkKE6x2Otb,"Stayin' Alive - From ""Saturday Night Fever"" Soundtrack",Bee Gees,disco,103.564,0.826,0.703,-7.179,0.179,0.945,285373,0.0322,0.0341
 spotify:track:2ebSTVQLOAId7JIZJMjNvu,La,Old Man River,,115.894,0.577,0.747,-5.635,0.254,0.479,203400,0.0288,0.0338
 spotify:track:3Y9wdXMh6sNt9fUwUqTqb7,Twisted Nerve,Bernard Herrmann,classic soundtrack,115.022,0.166,0.622,-14.063,0.111,0.224,87667,0.982,0.0588
 spotify:track:6S9lcjREUTU4Yv5y7oMcv2,Woo Hoo,The 5.6.7.8's,japanese garage rock,127.944,0.811,0.566,-9.849,0.596,0.961,119387,0.732,0.0435
@@ -861,7 +862,7 @@ spotify:track:65EHFWLmIgTHepERCBNaOv,Vieni A Ballare In Puglia,Caparezza,italian
 spotify:track:21jBRxUvrWXTwBfGnQwyVy,"Another Brick In The Wall, Pt. 2 - 2011 Remastered Version",Pink Floyd,album rock,104.126,0.394,0.694,-15.881,0.247,0.719,238747,0.0781,0.0428
 spotify:track:4Jv7lweGIUOFQ7Oq2AtAh9,I Follow Rivers - The Magician Remix,Lykke Li,art pop,121.974,0.696,0.786,-5.796,0.0839,0.306,280070,0.0234,0.0428
 spotify:track:5xC8uOesnn0udeXAYlAnoY,Alright,Supergrass,alternative rock,145.92,0.958,0.467,-4.808,0.299,0.701,180880,0.000479,0.0775
-spotify:track:1Jaah2tmN9Hv81A87KZ1MU,Torn,Natalie Imbruglia,dance pop,96.309,0.886,0.575,-5.182,0.709,0.609,244667,0.0647,0.034
+spotify:track:1Jaah2tmN9Hv81A87KZ1MU,Torn,Natalie Imbruglia,dance pop,96.31,0.886,0.575,-5.182,0.709,0.609,244667,0.0647,0.034
 spotify:track:7cpFmkNmh3MM0WqXPSbs9f,Suavemente,Elvis Crespo,latin,124.12,0.88,0.811,-2.972,0.0475,0.915,267000,0.254,0.0628
 spotify:track:3PR79C1jVvLLLmgdyHkXl3,That's the Way (I Like It) - 2004 Remaster,KC & The Sunshine Band,disco,108.674,0.877,0.68,-10.241,0.349,0.922,185107,0.191,0.0353
 spotify:track:0BB9eUBBaaX6GALSYNcEp7,You Spin Me Round (Like a Record),Dead Or Alive,dance rock,128.103,0.851,0.554,-10.526,0.405,0.96,196800,0.006,0.0334
@@ -896,7 +897,7 @@ spotify:track:5C0LFQARavkPpn7JgA4sLk,Every Breath You Take - Remastered 2003,The
 spotify:track:2wVXSc0IrQVodHESUxVUJA,Losing My Religion,R.E.M.,alternative rock,125.632,0.852,0.664,-4.996,0.1,0.807,268427,0.174,0.029
 spotify:track:20mDTss7l4lajSk5VHxdhe,Stand,Lenny Kravitz,permanent wave,116.987,0.643,0.804,-7.574,0.0897,0.881,199893,0.00305,0.0528
 spotify:track:5jhXP015f62MIjs2xwezLZ,Se mi chiami (feat. Neffa),Rocco Hunt,italian hip hop,91.634,0.762,0.602,-5.063,0.0632,0.938,233027,0.17,0.246
-spotify:track:4xqtrWCRJQE0TKwzIq08b5,Amami amami,MINACELENTANO,,133.936,0.839,0.654,-2.364,0.0772,0.447,198613,0.016,0.0758
+spotify:track:4xqtrWCRJQE0TKwzIq08b5,Amami amami,MINACELENTANO,italian adult pop,133.936,0.839,0.654,-2.364,0.0772,0.447,198613,0.016,0.0758
 spotify:track:6DhRYmgbtdXQlJ638xaHGt,Sabato,Jovanotti,classic italian pop,129.022,0.769,0.688,-6.318,0.0992,0.51,246933,0.0241,0.0436
 spotify:track:1OxcIUqVmVYxT6427tbhDW,Fly Away,Lenny Kravitz,permanent wave,159.925,0.872,0.587,-5.066,0.622,0.735,221333,0.018,0.0484
 spotify:track:5c1QJAiC3773EwiZLwHf5x,Again,Lenny Kravitz,permanent wave,79.166,0.804,0.55,-5.218,0.105,0.789,231667,0.0148,0.0271
@@ -952,7 +953,7 @@ spotify:track:3LhSWvr02ZOYL5IMd3nm1t,Gianna,Rino Gaetano,canzone d'autore,105.82
 spotify:track:1L9m2l2lhXgQ3GwmmCx3OK,Ma il cielo è sempre più blu,Rino Gaetano,canzone d'autore,145.783,0.642,0.647,-9.021,0.272,0.704,272747,0.15,0.0503
 spotify:track:2YMyVYNLmFDD0KGtNkkgFa,Kissing Strangers,DNCE,dance pop,120.079,0.741,0.776,-5.804,0.0701,0.854,202480,0.0506,0.041
 spotify:track:3VzJE6yGuj8fDExUh6TLnc,Candy Shop,50 Cent,east coast hip hop,125.173,0.574,0.614,-7.961,0.38,0.755,209107,0.0253,0.466
-spotify:track:6v3xCVgM73PGb0JIlF264a,"Stayin' Alive - From ""Saturday Night Fever"" Soundtrack",Bee Gees,adult standards,103.559,0.748,0.701,-8.179,0.147,0.917,284427,0.0211,0.0333
+spotify:track:6v3xCVgM73PGb0JIlF264a,"Stayin' Alive - From ""Saturday Night Fever"" Soundtrack",Bee Gees,disco,103.559,0.748,0.701,-8.179,0.147,0.917,284427,0.0211,0.0333
 spotify:track:3xlVVOw0dnZGZqQnUlIlsl,"I'm a Beliver (From ""Shrek"")",O.S. Collective,,160.023,0.878,0.658,-5.811,0.323,0.692,166040,0.00754,0.0418
 spotify:track:3G7tRC24Uh09Hmp1KZ7LQ2,I'm a Believer - 2006 Remaster,The Monkees,beatlesque,80.106,0.775,0.526,-6.05,0.217,0.962,167373,0.707,0.0352
 spotify:track:1OAh8uOEOvTDqkKFsKksCi,Wild Thoughts (feat. Rihanna & Bryson Tiller),DJ Khaled,dance pop,97.979,0.672,0.671,-3.094,0.118,0.632,204173,0.0329,0.0688
@@ -996,7 +997,6 @@ spotify:track:3173va3iajMxQspxO0MaNN,Il giorno di dolore che uno ha - 2008 Remas
 spotify:track:3TJzeYI1z0Ll7jzs5KMFwA,Una vita da mediano - 2008 Remaster,Ligabue,italian adult pop,146.093,0.576,0.499,-5.779,0.0832,0.293,234854,0.428,0.0257
 spotify:track:3OzQWNqAYtIAPTrj8gzcI6,Tutti vogliono viaggiare in prima - 2008 Remaster,Ligabue,italian adult pop,111.016,0.878,0.624,-3.318,0.135,0.646,270853,0.0514,0.0311
 spotify:track:26yfNwKIG0yPBR4GGQuxc2,L'amore conta - 2008 Remaster,Ligabue,italian adult pop,142.091,0.736,0.571,-5.058,0.142,0.366,266027,0.181,0.0268
-spotify:track:47fuMIRWu9Ol4No546DqhB,L'odore del sesso - 2008 Remaster,Ligabue,italian adult pop,110.001,0.928,0.494,-3.341,0.18,0.649,226893,0.365,0.0332
 spotify:track:2nhMqprCCkFXEjvbFnXc7o,Il giorno dei giorni - 2008 Remaster,Ligabue,italian adult pop,101.075,0.906,0.472,-3.257,0.327,0.472,270960,0.0205,0.0521
 spotify:track:3O2rrNJvOACoo3H3YKQpOj,Metti in circolo il tuo amore - 2008 Remaster,Ligabue,italian adult pop,105.619,0.61,0.615,-9.195,0.17,0.546,223347,0.801,0.0709
 spotify:track:5IEfsuoAa546HuXyINjE7B,Il centro del mondo,Ligabue,italian adult pop,110.011,0.762,0.554,-5.644,0.106,0.355,253893,0.0519,0.0392
@@ -1005,12 +1005,13 @@ spotify:track:7AIzw5TZYfVwJEr6019RT8,Il mio pensiero,Ligabue,italian adult pop,1
 spotify:track:6phRJS6FuPmcbjGt66XFBm,Eri bellissima - 2008 Remaster,Ligabue,italian adult pop,189.362,0.873,0.42,-4.464,0.211,0.642,234093,0.609,0.0397
 spotify:track:7FKMy8HB2zV53TEQZ1W08c,Happy Hour - 2008 Remaster,Ligabue,italian adult pop,139.993,0.952,0.489,-3.011,0.102,0.686,253720,0.107,0.0555
 spotify:track:60AiuDXh17FoqlOwbwwVrg,Ti sento - 2008 Remaster,Ligabue,italian adult pop,95.99,0.727,0.208,-4.643,0.119,0.238,223747,0.133,0.032
+spotify:track:47fuMIRWu9Ol4No546DqhB,L'odore del sesso - 2008 Remaster,Ligabue,italian adult pop,110.001,0.928,0.494,-3.341,0.18,0.649,226893,0.365,0.0332
 spotify:track:4AJGzESTbDoPez8lvnSDEe,Ho ancora la forza,Ligabue,italian adult pop,94.999,0.767,0.491,-5.935,0.0885,0.372,285560,0.279,0.0276
 spotify:track:0oPgW2m74CkHBPBc3vMIkh,Le donne lo sanno - 2008 Remaster,Ligabue,italian adult pop,109.01,0.905,0.535,-3.321,0.369,0.685,269027,0.247,0.0424
 spotify:track:00gBosCSSQK2gEDcaNcjAJ,Ho perso le parole - 2008 Remaster,Ligabue,italian adult pop,98.553,0.701,0.511,-4.362,0.114,0.369,268000,0.0365,0.0268
 spotify:track:3o8S5uXzIW5hf7VIVbttU0,Questa è la mia vita - 2008 Remaster,Ligabue,italian adult pop,105.015,0.934,0.45,-4.063,0.158,0.322,241960,0.0208,0.0441
 spotify:track:7FhNqr3io4TWYrPYPJiLvK,Tra palco e realtà - 2008 Remaster,Ligabue,italian adult pop,139.118,0.886,0.476,-4.169,0.131,0.619,278347,0.0261,0.0428
-spotify:track:5gTuH5Jl8PVUitsFzFslWu,Certe notti,Ligabue,italian adult pop,179.404,0.716,0.364,-4.829,0.115,0.375,261400,0.547,0.0382
+spotify:track:5gTuH5Jl8PVUitsFzFslWu,Certe notti,Ligabue,italian adult pop,179.407,0.716,0.363,-4.829,0.115,0.372,261400,0.55,0.0383
 spotify:track:0HpKuz1HfXxRzNnUqfwzgF,Piccola stella senza cielo,Ligabue,italian adult pop,115.338,0.722,0.52,-4.393,0.123,0.475,238893,0.658,0.0309
 spotify:track:76pq1DTnlthH7VnScRK9GU,Mon amour,Gigi D'Alessio,canzone napoletana,125.051,0.893,0.763,-5.376,0.0503,0.898,238600,0.149,0.185
 spotify:track:5duXiMWCLz4vidIT8tzzNG,Non mollare mai,Gigi D'Alessio,canzone napoletana,149.808,0.741,0.447,-6.742,0.0829,0.329,254520,0.258,0.0462
@@ -1042,7 +1043,7 @@ spotify:track:2SrPhOKNyhBZqxqTEC5aRq,Se telefonando,Mina,classic italian pop,110
 spotify:track:54Jqsflm9eSeRludnzYEeq,"Ancora, Ancora, Ancora - 2001 Remaster",Mina,classic italian pop,100.397,0.402,0.553,-12.07,0.321,0.448,258933,0.0674,0.0263
 spotify:track:3m6KkYKdnbffMpGd9Pm9FP,Seven Nation Army,The White Stripes,alternative rock,123.889,0.466,0.745,-7.62,0.272,0.303,231920,0.00666,0.0864
 spotify:track:45sGyAtAxD6efaN0bJAFgh,Bailar (feat. Elvis Crespo) - Radio Edit,Deorro,dance pop,128.051,0.738,0.799,-9.043,0.0603,0.397,137661,0.0485,0.118
-spotify:track:7rl7TNsfJiJJ3BY47peVSm,A un passo da te,MINACELENTANO,,181.711,0.862,0.64,-2.796,0.0891,0.459,271360,0.239,0.356
+spotify:track:7rl7TNsfJiJJ3BY47peVSm,A un passo da te,MINACELENTANO,italian adult pop,181.711,0.862,0.64,-2.796,0.0891,0.459,271360,0.239,0.356
 spotify:track:2fuCquhmrzHpu5xcA1ci9x,Under Pressure - Remastered 2011,Queen,classic rock,113.805,0.712,0.671,-7.815,0.103,0.462,248440,0.429,0.0476
 spotify:track:5vdp5UmvTsnMEMESIF2Ym7,Another One Bites The Dust - Remastered 2011,Queen,classic rock,109.967,0.528,0.933,-6.472,0.163,0.754,214653,0.112,0.161
 spotify:track:5T8EDUDqKcs6OSOwEsfqG7,Don't Stop Me Now - Remastered 2011,Queen,classic rock,156.295,0.868,0.559,-5.276,0.776,0.609,209413,0.0475,0.17
@@ -1081,7 +1082,7 @@ spotify:track:2ZSCy3P1QzpJySCWA6NRIU,I Was Made For Lovin' You,KISS,album rock,1
 spotify:track:225xvV8r1yKMHErSWivnow,"I Don't Want to Miss a Thing - From ""Armageddon"" Soundtrack",Aerosmith,album rock,121.154,0.662,0.383,-5.162,0.248,0.138,298760,0.165,0.0333
 spotify:track:7pKfPomDEeI4TPT6EOYjn9,Imagine - Remastered 2010,John Lennon,album rock,75.752,0.257,0.547,-12.358,0.0935,0.169,187867,0.907,0.0252
 spotify:track:7o2CTH4ctstm8TNelqjb51,Sweet Child O' Mine,Guns N' Roses,glam metal,125.116,0.91,0.454,-7.766,0.116,0.629,354520,0.0866,0.0448
-spotify:track:08mG3Y1vljYA6bvDt4Wqkj,Back In Black,AC/DC,album rock,188.386,0.7,0.31,-5.678,0.0828,0.763,255493,0.011,0.047
+spotify:track:08mG3Y1vljYA6bvDt4Wqkj,Back In Black,AC/DC,australian rock,188.386,0.7,0.31,-5.678,0.0828,0.763,255493,0.011,0.047
 spotify:track:5n6RDaGFSN88oRWuGtYAIN,The Show Must Go On - Remastered 2011,Queen,classic rock,84.141,0.687,0.426,-6.926,0.112,0.189,277827,0.409,0.0329
 spotify:track:6kK2YbF8boQl32Lqkai3Ca,All Night,Parov Stelar,downtempo,125.02,0.618,0.797,-7.672,0.243,0.826,166400,0.107,0.0429
 spotify:track:7qiZfU4dY1lWllzX7mPBI3,Shape of You,Ed Sheeran,pop,95.977,0.652,0.825,-3.183,0.0931,0.931,233713,0.581,0.0802

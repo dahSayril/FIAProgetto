@@ -21,7 +21,7 @@ function main(pathPCA, pathStandardizzato) {
     //2. Rilevo il k-ottimale da usare per il clustering
     //Grafico Elbow Point
     const elbowPointIndex = elbowPoint(datasetPCA,2,10);
-    console.log(elbowPointIndex);
+    console.log("Elbow point: " + elbowPointIndex);
 
     //3. Calcolo cluster
     const clusters = makeCluster(elbowPointIndex, 1000, datasetPCA);
@@ -287,9 +287,9 @@ function graficoRadar(clusters, datasetCluster,datasetCompleto,rangeMin=-2,range
             type: 'scatterpolar',
             r: [ valoreMedio(songs,"Beats Per Minute (BPM)"),valoreMedio(songs,"Energy"), valoreMedio(songs,"Danceability"),
                 valoreMedio(songs,"Loudness (dB)"), valoreMedio(songs,"Liveness"),
-                valoreMedio(songs,"Valence"), valoreMedio(songs,"Length (Duration)"),
+                valoreMedio(songs,"Valence"),
                 valoreMedio(songs,"Acousticness"), valoreMedio(songs,"Speechiness")],
-            theta: ["Beats Per Minute (BPM)","Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"],
+            theta: ["Beats Per Minute (BPM)","Energy","Danceability","Loudness (dB)","Liveness","Valence","Acousticness","Speechiness"],
             fill: 'toself',
             name: 'Cluster '+ j,
         };

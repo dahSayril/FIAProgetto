@@ -12,7 +12,8 @@ function pcaProcess(datasetDiPartenza,percentualeOttima){
     let dataFrame = dataForge.readFileSync(datasetDiPartenza).parseCSV();
 
     // Seleziono solo le features che mi interessano
-    let features = ["Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    // let features = ["Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
+    let features = ["Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Acousticness","Speechiness"];
     let totalFeatures=["Index","Title","Artist","Top Genre","Beats Per Minute (BPM)", "Energy","Danceability","Loudness (dB)","Liveness","Valence","Length (Duration)","Acousticness","Speechiness"];
     let subDataFrame = dataFrame.subset(features);
 
@@ -28,22 +29,6 @@ function pcaProcess(datasetDiPartenza,percentualeOttima){
         standardize(myColumn);
         myColumns.push(myColumn);
     }
-
-    // //Normalizzazione valori tra 0 e 1
-    // for(i=0;i<myColumns.length;i++){
-    //     var max=-100,min=100;
-    //     //Ricero il massimo e il minimo
-    //     for(j=0;j<myColumns[i].length;j++){
-    //         if(max<myColumns[i][j])
-    //             max=myColumns[i][j];
-    //         if(min>myColumns[i][j])
-    //             min=myColumns[i][j];
-    //     }
-    //     //Normalizzo i valori
-    //     for(j=0;j<myColumns[i].length;j++){
-    //         myColumns[i][j]=normalize(myColumns[i][j],max,min);
-    //     }
-    // }
 
 
     let newDataSource = [];
@@ -204,7 +189,7 @@ function normalize(val, max, min) {
     return (val - min) / (max - min);
 }
 
-
+/* Used in app.js as stand-alone */
 function graficoComonetiPrecisioneVarianza(datasetDiPartenza){
     // Carico il DataSet
     let dataFrame = dataForge.readFileSync(datasetDiPartenza).parseCSV();
