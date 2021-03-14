@@ -358,70 +358,9 @@ function grafico3D(clusters,datasetCluster,datasetCompleto){
         i=i+1;
 
     }
-/*
-    let traces = [["alternative"], ["jazz"], ["pop"], ["indie"], ["rock"], ["country"], ["dance"], ["hip hop"], ["metal"], ["blues"], ["folk"], ["soul"], ["carnaval"], ["punk"],
-        ["disco"], ["electro"], ["rap"], ["latin"], ["reggae"] ];
 
-    traces.forEach(value => { value.attribute = { x: [], y: [], z: [], title: [] } });
-
-    for(let p = 0; p < songs.length; p++) {
-
-        let index = - 1;
-
-        for(let q = 0; q < traces.length; q++) {
-           if(traces[q][0] === songs[p]["genere"]) 
-                index = q;
-        }
-
-        if(index === -1) {
-            traces.push([songs[p]["genere"]]);
-            index  = traces.length - 1;
-            traces[index].attribute = { x: [], y: [], z: [], title: [] }
-        }
-            
-
-        traces[index]["attribute"].x.push(songs[p].x);
-        traces[index]["attribute"].y.push(songs[p].y);
-        traces[index]["attribute"].z.push(songs[p].z);
-        traces[index]["attribute"].title.push(songs[p].title);
-
-    }
-
-    let dataToBePlotted2 = [];
-
-
-    for(let p = 0; p < traces.length; p++) {
-
-        const t = traces[p].attribute;
-
-        let trace = {
-            x: t.x,
-            y: t.y,
-            z: t.z, //Do tutte le canzoni che compongono il cluster
-            mode: 'markers',
-            name: traces[p][0],
-            marker: {
-                size: 5,
-                line: {
-                    width: 0.1
-                },
-                opacity: 1,
-            },
-            text: t.title, //Ottengo un array di titoli per le canzoni che compongono il cluster
-            type: 'scatter3d'
-        };
-
-        dataToBePlotted2.push(trace);
-
-    }
-*/
     var layout = {
-        margin: {
-            l: 0,
-            r: 0,
-            b: 0,
-            t: 0
-        },
+        title: 'K-Means generated clusters',
         legend: {
             "orientation": "h"
         }
